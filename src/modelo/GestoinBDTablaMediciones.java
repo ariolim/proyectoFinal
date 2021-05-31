@@ -26,14 +26,30 @@ public class GestoinBDTablaMediciones {
    */
   public static ArrayList<Provincia> generarListaProvincias() throws Exception {
 
+    /**
+     * Creemos una lista de provincias y la instanciamos
+     */
     ArrayList<Provincia> listaProvincias = new ArrayList<>();
 
+    /**
+     * Sentencia a ejecutar
+     */
     String sql = "select nombre_provincia,mes,tem_med_min,tem_med_med,tem_med_max,prec_media from mediciones";
 
+    /*
+     * Declaramos la preparación de la sentencia y la instanciamos
+     * Declaramos el resultado
+     */
     PreparedStatement sentencia = null;
     ResultSet result;
     try {
+      /*
+       * Cargamos en la variable la sentencia
+       */
       sentencia = ConexionBD.conexion().prepareStatement(sql);
+      /*
+      *
+      */
       result = sentencia.executeQuery();
 
       while (result.next()) {

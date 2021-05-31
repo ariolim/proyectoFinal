@@ -2,7 +2,6 @@ package modelo;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -83,38 +82,52 @@ public class ConexionBD {
    * @throws Exception
    */
   public static void generarBaseDatos() throws Exception {
-
+    //Se carga en una variable la conexión directa al gestor de la base de datos sin entrar en ninguna tabla.
     Connection conexion = conexionDirecta();
 
+    //Se crea una isntancia de un StringBuider para cargar las sentencias de SQL
     StringBuilder ficheroLeido = new StringBuilder();
     BufferedReader buffer = null;
     String linea = "";
+    //Declaramos una sentencia
+    PreparedStatement statement = null;
     try {
+      //Leemos del fichero y lo cargamos en la variable del flujo de datos.
       buffer = new BufferedReader(new FileReader("ficheros/temperaturas2019.sql"));
-
+      //Leemos una linea del fichero
       linea = buffer.readLine();
+      //Mientras tenga contenido se genera el bucle.
       while (linea != null) {
+        //Cargamos la linea en el StringBuilder
         ficheroLeido.append(linea);
+        //Si la linea contiene el ";" es que la sentencia esta completa.
         if (linea.contains(";")) {
-          try {
-
-            String sql = ficheroLeido.toString();
-
-            PreparedStatement statement;
-            statement = conexion.prepareStatement(sql);
-            statement.executeUpdate();
-
-          } catch (SQLException ex) {
-            throw new Exception("Error Sql " + ex.getSQLState());
-          } catch (Exception ex) {
-            throw new Exception("Error: " + ex.getMessage());
-          }
+          //Cargamos en un String las lineas del fichero asta el ";"
+          String sql = ficheroLeido.toString();
+          //Preparamos la sentencia a ejecutar 
+          statement = conexion.prepareStatement(sql);
+          //Ejecutamos la actualización de la base de datos
+          statement.executeUpdate();
+          //Reseteamos el StringBuilder
           ficheroLeido = new StringBuilder();
         }
+        //Volvemos a leer otra línea
         linea = buffer.readLine();
+      }//Excepciones
+    } catch (SQLException e) {
+      throw new SQLException("Error SQL: " + e.getMessage());
+    } catch (NullPointerException e) {
+      throw new NullPointerException("No se ha podido conectar a la base de datos: " + e.getMessage());
+    } catch (Exception e) {
+      throw new Exception("Error: " + e.getMessage());
+    } finally {//Finalmete cerramos la conexión 
+      try {
+        if (statement != null) {
+          statement.close();
+        }
+      } catch (SQLException e) {
+        throw new SQLException("Error SQL: " + e.getMessage());
       }
-    } catch (FileNotFoundException ex) {
-      throw new Exception("Error al leer fichero: " + ex.getMessage());
     }
   }
 }

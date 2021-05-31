@@ -74,7 +74,7 @@ public class FXMLVistaVentanaPrincipalController implements Initializable {
    * Lista Observable para mostrar las mediciones.
    */
   private ObservableList<Medicion> listaObservableMediciones;
-
+ 
   /**
    * Método de inicio de la vista. En la clase se carga la lista de Provincias
    * que viene de la clase principal (Sea cargada del fichero excel o de la base
