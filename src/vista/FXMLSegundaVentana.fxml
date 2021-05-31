@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLSegundaVentanaController">
+   <children>
+      <TextField fx:id="textF_Tem_Min" layoutX="71.0" layoutY="85.0" onAction="#cambioTemperaturaMinima" />
+      <Text layoutX="66.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura Mínima" />
+      <TextField fx:id="textF_Tem_Med" layoutX="71.0" layoutY="152.0" onAction="#cambioTem_Media" />
+      <Text layoutX="71.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura Media" />
+      <Text layoutX="74.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura Maxima" />
+      <TextField fx:id="textF_Tem_Max" layoutX="71.0" layoutY="221.0" onAction="#cambioTemMedia" />
+      <Text layoutX="71.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precipitacion" />
+      <TextField fx:id="textF_Precipitacion" layoutX="69.0" layoutY="289.0" onAction="#cambioPrecipitacion" />
+      <Button fx:id="botonGuardar" layoutX="88.0" layoutY="360.0" mnemonicParsing="false" onAction="#guardarBaseDatos" text="Guardar Y Cerrar" />
+   </children>
+</AnchorPane>
