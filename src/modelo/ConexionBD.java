@@ -13,6 +13,9 @@ import java.util.Properties;
 
 /**
  * <main>ConexionBD</main>
+ * <p>
+ * La clase conecta a la base de datos desde por medio de un fichero .properties
+ * Si la base de datos no exsiste la crea.</p>
  *
  * @email al.andres.rios.lima@iesportada.es
  * @author Andres Ríos Lima
@@ -21,7 +24,7 @@ import java.util.Properties;
 public class ConexionBD {
 
   /**
-   * Atributos de la clase para controlar la conexión.
+   * Atributos de la clase con los dos ficheros de conexión posibles
    */
   private static String ficheroCredenciales = "ficheros/credDB.properties";
 
@@ -32,8 +35,9 @@ public class ConexionBD {
    * fichero ".properties".
    *
    * @param fichero
-   * @return
-   * @throws Exception
+   * @return tipo Conection con la conexión
+   * @throws Exception lanza excepciones si no puede conectarse a la base de
+   * datos o no puede leer el fichero de conexión
    */
   public static Connection conexion(String fichero) throws Exception {
 
@@ -53,10 +57,22 @@ public class ConexionBD {
     return conexion;
   }
 
+  /**
+   * Método estático que devuelve una conexion. llama al método conexión()
+   *
+   * @return tipo Conexcion con una conexión.
+   * @throws Exception Lanza excepciones que viene de otro método.
+   */
   public static Connection conexion() throws Exception {
     return conexion(ficheroCredenciales);
   }
 
+  /**
+   * Método stático que devuelve una conexión. llama al método conexion().
+   *
+   * @return tipo Conexcion con una conexión.
+   * @throws Exception Lanza excepciones que viene de otro método.
+   */
   public static Connection conexionDirecta() throws Exception {
     return conexion(ficheroCredencialesSinBd);
   }
@@ -89,16 +105,16 @@ public class ConexionBD {
             statement.executeUpdate();
 
           } catch (SQLException ex) {
-            throw new Exception("Error Sql "+ex.getSQLState());
+            throw new Exception("Error Sql " + ex.getSQLState());
           } catch (Exception ex) {
-            throw new Exception("Error: "+ ex.getMessage());
+            throw new Exception("Error: " + ex.getMessage());
           }
           ficheroLeido = new StringBuilder();
         }
         linea = buffer.readLine();
       }
     } catch (FileNotFoundException ex) {
-      throw new Exception("Error al leer fichero: "+ex.getMessage());
+      throw new Exception("Error al leer fichero: " + ex.getMessage());
     }
   }
 }

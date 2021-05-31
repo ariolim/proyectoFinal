@@ -15,11 +15,14 @@ import java.util.ArrayList;
  */
 public class GestoinBDTablaMediciones {
 
-  
   /**
-   * 
-   * @return
-   * @throws Exception 
+   * El método recibe de la base de datos los resultados de la tabla mediciones
+   * y crea una lista de provincias con sus diferentes mediciones
+   *
+   * @return Retorna tipo ArrayList con las provincas cargadas de la base de
+   * datos
+   * @throws Exception lanza excepciones de fallos SQL, o fallos al conectarse a
+   * la base de datos.
    */
   public static ArrayList<Provincia> generarListaProvincias() throws Exception {
 
@@ -55,7 +58,7 @@ public class GestoinBDTablaMediciones {
     } catch (SQLException e) {
       throw new SQLException("Error SQL: " + e.getMessage());
     } catch (NullPointerException e) {
-      throw new NullPointerException("No se ha podido a la base de datos: " + e.getMessage());
+      throw new NullPointerException("No se ha podido conectar a la base de datos: " + e.getMessage());
     } catch (Exception e) {
       throw new Exception("Error: " + e.getMessage());
     } finally {
@@ -71,9 +74,13 @@ public class GestoinBDTablaMediciones {
   }
 
   /**
-   * 
-   * @param provincia
-   * @throws Exception 
+   * Método estático que inserta medicioens a la tabla mediciones. Se le pasa
+   * una provincia que contiene una lista de mediciones y las introduce en la
+   * base de datos.
+   *
+   * @param provincia tipo Provincia
+   * @throws Exception lanza excepciones de fallos SQL, o fallos al conectarse a
+   * la base de datos.
    */
   public static void insertarMediciones(Provincia provincia) throws Exception {
 
@@ -114,6 +121,14 @@ public class GestoinBDTablaMediciones {
     }
   }
 
+  /**
+   * Método stático que nos muestra si la tabla medicioens contiene registro o
+   * no
+   *
+   * @return tipo boolean con el resultado .Si es true la tabla esta vacía y si
+   * es false la tabla contiene registros
+   * @throws Exception
+   */
   public static boolean obtenerFilasTabla() throws Exception {
     boolean vacio = true;
 
@@ -147,6 +162,15 @@ public class GestoinBDTablaMediciones {
     return vacio;
   }
 
+  /**
+   * Método privado estático que nos devuelve la posición de una provincia
+   * dentro de un listado de provincias que se le pasa por parámetros.
+   *
+   * @param nombreString tipo String con el nombre de la provincia a buscar
+   * dentro de la lista
+   * @param listaProvincias tipo ArrayList de provincias
+   * @return tipo entero con la posición de la provincia
+   */
   private static int devolverIndiceProvincia(String nombreString, ArrayList<Provincia> listaProvincias) {
     int indice = -1;
     boolean encontrado = false;

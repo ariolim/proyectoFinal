@@ -73,8 +73,15 @@ public class Provincia {
   public void setListaMediciones(ArrayList<Medicion> listaMediciones) {
     this.listaMediciones = listaMediciones;
   }
-  
-  public void insertarMedicion(Medicion medicion){
+
+  /**
+   * Método para insertar una medicion dentro de la lista de mediciones de una
+   * instancia de una provincia.
+   *
+   * @param medicion tipo Medicion con la medicion que se va a introducir en la
+   * lista de mediciones.
+   */
+  public void insertarMedicion(Medicion medicion) {
     listaMediciones.add(medicion);
   }
 
