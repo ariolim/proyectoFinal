@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Objects;
+
 /**
  * <main>Medicion</main>
  * <p>
@@ -31,13 +33,22 @@ public class Medicion {
    * @param preci_media tipo double con las precipitaciones
    * @param mes tipo Mes con el mes que corresponde
    */
-  public Medicion(String nombreProvincia,double tem_min, double tem_med, double tem_max, double preci_media, Meses mes) {
+  public Medicion(String nombreProvincia, double tem_min, double tem_med, double tem_max, double preci_media, Meses mes) {
     this.nombreProvincia = nombreProvincia;
     this.tem_max = tem_max;
     this.tem_med = tem_med;
     this.tem_min = tem_min;
     this.preci_media = preci_media;
     this.mes = mes;
+  }
+
+  /**
+   * Getter del nombre de la provincia
+   *
+   * @return tipo String con el nombre de la provincia.
+   */
+  public String getNombreProvincia() {
+    return nombreProvincia;
   }
 
   /**
@@ -129,4 +140,46 @@ public class Medicion {
   public void setTem_max(double tem_max) {
     this.tem_max = tem_max;
   }
+
+  /**
+   * Método para obtener el numero hash
+   *
+   * @return tipo entero con el numero correspondiente
+   */
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 41 * hash + Objects.hashCode(this.nombreProvincia);
+    hash = 41 * hash + Objects.hashCode(this.mes);
+    return hash;
+  }
+
+  /**
+   * Método para comparar dos mediciones y saber si son iguales. Estas son
+   * iguales si el nombre de la provicia y el mes son iguales
+   *
+   * @param obj tipo Object que se casteará a un objeto Medicion
+   * @return tipo boolean true si son iguales y false si no lo son
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Medicion other = (Medicion) obj;
+    if (!Objects.equals(this.nombreProvincia, other.nombreProvincia)) {
+      return false;
+    }
+    if (this.mes != other.mes) {
+      return false;
+    }
+    return true;
+  }
+
 }

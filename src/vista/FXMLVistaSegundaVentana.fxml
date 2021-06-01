@@ -12,9 +12,9 @@
       <TextField fx:id="textF_Tem_Med" layoutX="71.0" layoutY="152.0" onAction="#cambioTem_Media" />
       <Text layoutX="71.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura Media" />
       <Text layoutX="74.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperatura Maxima" />
-      <TextField fx:id="textF_Tem_Max" layoutX="71.0" layoutY="221.0" onAction="#cambioTemMedia" />
+      <TextField fx:id="textF_Tem_Max" layoutX="71.0" layoutY="221.0" onAction="#cambioTem_Max" />
       <Text layoutX="71.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precipitacion" />
       <TextField fx:id="textF_Precipitacion" layoutX="69.0" layoutY="289.0" onAction="#cambioPrecipitacion" />
-      <Button fx:id="botonGuardar" layoutX="88.0" layoutY="360.0" mnemonicParsing="false" onAction="#guardarBaseDatos" text="Guardar Y Cerrar" />
+      <Button fx:id="botonGuardar" layoutX="88.0" layoutY="360.0" mnemonicParsing="false" onAction="#eventoBotonGuardar" text="Guardar Y Cerrar" />
    </children>
 </AnchorPane>
