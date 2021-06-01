@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -122,14 +123,13 @@ public class FXMLPrimeraVentanaController implements Initializable {
 
   /**
    * Evento se produce cuando seleccionas una medición de la tabla, se habilita
-   * el boton de modificar y se le requiere focus
+   * el boton de modificar
    *
    * @param event
    */
   @FXML
   private void devolverMedicionTabla(MouseEvent event) {
     botonModificar.setDisable(false);
-    botonModificar.requestFocus();
   }
 
   /**
@@ -156,30 +156,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
    */
   @FXML
   private void botonModificarMedicion(ActionEvent event) {
-    try {
-
-      //Cargar la vista de la nueva ventana.
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLVistaSegundaVentana.fxml"));
-      //Carga en el padre o root toso los elementos que contendrá la vista.
-      Parent root = loader.load();
-      //Instancioamos el controlador de la segunda ventana para traernos la Medicion
-      FXMLSegundaVentanaController controladorSegVent = (FXMLSegundaVentanaController) loader.getController();
-      //Llamamos a un método público del controlador de la segunda ventana y le pasamos por parámetros una instancia del primer controlador y la medición elegida en la tabla
-      controladorSegVent.recibirMedicionCtrlUno(controladorPrimeraVentana, tablaMediciones.getSelectionModel().getSelectedItem());
-
-      //Instanciamos una nueva scena con los elementos cargados en el root
-      Scene scene = new Scene(root);
-      Stage stage = new Stage();//Instanciamos un nuevo scenario
-      //La modalidad del nuevo escenario será aplicación modal (para que no se pueda realizaracciones con la ventana nueva abierta.
-      stage.initModality(Modality.APPLICATION_MODAL);
-      stage.setScene(scene);//Cargamos el escenario con la escena
-      //Este método muestra la ventana y deja el evento en parada para que e pueda realizar otro eventos en la nueva ventana y no pase la ejecución del programa de esta linea esta que se cierra la ventanan nueva.
-      stage.showAndWait();
-      comoBoxProvincias.requestFocus();
-      tablaMediciones.refresh();
-    } catch (IOException ex) {
-      ClaseAlertas.alertasErrores("Error", ex.getMessage());
-    }
+    modificarMedicionSeleccionada();
   }
 
   /**
@@ -276,6 +253,17 @@ public class FXMLPrimeraVentanaController implements Initializable {
   }
 
   /**
+   * Método cuando se le pulsa enter llama al método privado para abrir la vista
+   * para modificar una medición
+   *
+   * @param event
+   */
+  @FXML
+  private void selectcionarTeclado(KeyEvent event) {
+    modificarMedicionSeleccionada();
+  }
+
+  /**
    * Cuando se pulsa a este boton carga la base de datos por defecto desde el
    * fichero excel.
    *
@@ -323,6 +311,36 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private void cargarComboProvincias() {
     for (ProvinciasEnum provincia : ProvinciasEnum.values()) {
       comoBoxProvincias.getItems().add(provincia.getNombreProvincia());
+    }
+  }
+
+  /**
+   * Método privado que muestra que carga una nueva vista y en esta se muestra
+   * la selección hecha en la tabla
+   */
+  private void modificarMedicionSeleccionada() {
+    try {
+      //Cargar la vista de la nueva ventana.
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLVistaSegundaVentana.fxml"));
+      //Carga en el padre o root toso los elementos que contendrá la vista.
+      Parent root = loader.load();
+      //Instancioamos el controlador de la segunda ventana para traernos la Medicion
+      FXMLSegundaVentanaController controladorSegVent = (FXMLSegundaVentanaController) loader.getController();
+      //Llamamos a un método público del controlador de la segunda ventana y le pasamos por parámetros una instancia del primer controlador y la medición elegida en la tabla
+      controladorSegVent.recibirMedicionCtrlUno(controladorPrimeraVentana, tablaMediciones.getSelectionModel().getSelectedItem());
+
+      //Instanciamos una nueva scena con los elementos cargados en el root
+      Scene scene = new Scene(root);
+      Stage stage = new Stage();//Instanciamos un nuevo scenario
+      //La modalidad del nuevo escenario será aplicación modal (para que no se pueda realizaracciones con la ventana nueva abierta.
+      stage.initModality(Modality.APPLICATION_MODAL);
+      stage.setScene(scene);//Cargamos el escenario con la escena
+      //Este método muestra la ventana y deja el evento en parada para que e pueda realizar otro eventos en la nueva ventana y no pase la ejecución del programa de esta linea esta que se cierra la ventanan nueva.
+      stage.showAndWait();
+      comoBoxProvincias.requestFocus();
+      tablaMediciones.refresh();
+    } catch (IOException ex) {
+      ClaseAlertas.alertasErrores("Error", ex.getMessage());
     }
   }
 }

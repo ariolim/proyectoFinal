@@ -4,3 +4,46 @@
     Author     : Andres Ríos Lima
 */
 
+
+/*color de fondo*/
+.root{
+  -fx-background-color: #2C3C53;
+}
+/*características del título*/
+#titulo{
+  -fx-text-fill:e9a734;
+  -fx-font-weight:bold;
+  -dx-font-size:20px;
+}
+/*características de los botones*/
+.button{
+  -fx-background-color:e9a734;
+  -fx-text-fill:#ffffff;
+  -fx-font-weight:bold;
+  -dx-font-size:20px;
+}
+/*caracteristicas de las etiquetas*/
+.label{
+  -fx-text-fill:#FFFFFF;
+  -fx-font-weight:bold;
+  -dx-font-size:20px;
+}
+/*características de focus de lso botones*/
+.button:focused {
+    -fx-border-color: #2C3C53,#2C3C53;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+/*características del fondo de las columnas de la tabla*/
+.table-view .column-header-background {
+    -fx-background-color: #FFFFFF;
+}
+/*características de los títulos de las columnas*/
+.table-view .column-header .label {
+    -fx-font-size: 15px;
+    -fx-text-fill: e9a734;
+    -fx-alignment: center;
+    -fx-opacity: 5;
+}
