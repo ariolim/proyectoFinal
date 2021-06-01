@@ -127,8 +127,11 @@ public class FXMLSegundaVentanaController implements Initializable {
     double prec = Double.parseDouble(textF_Precipitacion.getText());
 
     ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
+    
 
     Stage stage = (Stage) botonGuardar.getScene().getWindow();
+    ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
     stage.close();
+    
   }
 }

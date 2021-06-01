@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * <main>GestionBDTablaMediciones</main>
@@ -249,5 +251,40 @@ public class GestionBDTablaMediciones {
       }
     }
     return indice;
+  }
+
+  /**
+   * Método para truncar la tabla mediciones
+   *
+   * @throws Exception lanza excepciones de fallos SQL, o fallos al conectarse a
+   * la base de datos.
+   */
+  public static void truncarTablaMediciones() throws Exception {
+
+    //Cargamos la consulta en una variable
+    String sql = "truncate mediciones";
+    //Declaración de una sentencia
+    PreparedStatement sentencia = null;
+
+    try {
+      //Carga de la sentencia con la conexión y se prepara con la sentencia
+      sentencia = ConexionBD.conexion().prepareStatement(sql);
+      //Ejecución de la sentencia
+      sentencia.execute();
+    } catch (SQLException e) {//Control de excepciones
+      throw new SQLException("Error SQL: " + e.getMessage());
+    } catch (NullPointerException e) {
+      throw new NullPointerException("No se ha podido a la base de datos: " + e.getMessage());
+    } catch (Exception e) {
+      throw new Exception("Error: " + e.getMessage());
+    } finally {
+      try {
+        if (sentencia != null) {
+          sentencia.close();
+        }
+      } catch (SQLException e) {
+        throw new SQLException("Error SQL: " + e.getMessage());
+      }
+    }
   }
 }

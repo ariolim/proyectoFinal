@@ -3,9 +3,8 @@ package controlador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.GestionBDTablaMediciones;
+import modelo.LeerExcelMediciones;
 import modelo.Medicion;
 import modelo.Meses;
 import modelo.Provincia;
@@ -64,7 +65,8 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private Button botonReset;
   @FXML
   private Button botonMostrarDatos;
-
+  @FXML
+  private Button botonCargarBaseDatos;
   /**
    *
    */
@@ -152,6 +154,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
       stage.setScene(scene);//Cargamos el escenario con la escena
       //Este método muestra la ventana y deja el evento en parada para que e pueda realizar otro eventos en la nueva ventana y no pase la ejecución del programa de esta linea esta que se cierra la ventanan nueva.
       stage.showAndWait();
+      comoBoxProvincias.requestFocus();
       tablaMediciones.refresh();
     } catch (IOException ex) {
       ClaseAlertas.alertasErrores("Error", ex.getMessage());
@@ -169,7 +172,6 @@ public class FXMLPrimeraVentanaController implements Initializable {
    * @param tem_max tipo double con el nuevo dato de tem_max de la medición
    * @param preci tipo double con el nuevo dato de precipitación de la medición
    */
-  @FXML
   public void recibirMedicionModificadaVenDos(Medicion medicion, double tem_min, double tem_med, double tem_max, double preci) {
 
     try {
@@ -250,7 +252,38 @@ public class FXMLPrimeraVentanaController implements Initializable {
       //requiere focus al combo de provincias
       comoBoxProvincias.requestFocus();
     }
+  }
 
+  /**
+   * Cuando se pulsa a este boton carga la base de datos por defecto desde el
+   * fichero excel.
+   *
+   * @param event
+   */
+  @FXML
+  private void cargarBaseDatosConFichero(ActionEvent event) {
+    //Declaración de boton auxiliar para cargar en el la confirmación de la alerta
+    Optional<ButtonType> resultado;
+    try {
+      //Cargamos la opción elegida por el usuario
+      resultado = ClaseAlertas.alertasConfiramcion(event, "¿Desea realmente cargar la base de datos con los datos del fichero Excel?");
+
+      //SI la opción elegida es afirmativa se produde la carga de la lista de provincias con los datos del fichero excel
+      if (resultado.get() == ButtonType.OK) {
+        listaProvincias = LeerExcelMediciones.leerFichero();
+        //Se trunca la tabla mediciones para que puedan insertarse los nuevo datos
+        GestionBDTablaMediciones.truncarTablaMediciones();
+        //Se recorre la lista de provincias y se llama al método para insertar mediciones
+        for (Provincia provincia : listaProvincias) {
+          GestionBDTablaMediciones.insertarMediciones(provincia);
+        }
+        //Finalmente, si todo ha salido correctamente salta una alerta de mensaje
+        ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
+      }
+      comoBoxProvincias.requestFocus();
+    } catch (Exception ex) {//Control de exceciones
+      ClaseAlertas.alertasErrores("error", ex.getMessage());
+    }
   }
 
   /**
@@ -271,4 +304,5 @@ public class FXMLPrimeraVentanaController implements Initializable {
       comoBoxProvincias.getItems().add(provincia.getNombreProvincia());
     }
   }
+
 }

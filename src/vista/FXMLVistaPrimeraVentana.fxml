@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="1097.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
    <children>
-      <TableView fx:id="tablaMediciones" layoutX="34.0" layoutY="118.0" onMouseClicked="#devolverMedicionTabla" prefHeight="382.0" prefWidth="575.0">
+      <TableView fx:id="tablaMediciones" layoutX="34.0" layoutY="118.0" onMouseClicked="#devolverMedicionTabla" prefHeight="382.0" prefWidth="552.0">
         <columns>
           <TableColumn fx:id="columnaMeses" prefWidth="109.0" text="MES" />
           <TableColumn fx:id="columnaTem_min" prefWidth="83.0" text="TEM_MIN" />
@@ -33,9 +33,9 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <ImageView fitHeight="397.0" fitWidth="164.0" layoutX="855.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="397.0" fitWidth="164.0" layoutX="903.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../ficheros/termometro2.jpeg" />
+            <Image url="@../recursos/imagen/termometro2.jpeg" />
          </image>
          <cursor>
             <Cursor fx:constant="SW_RESIZE" />
@@ -43,5 +43,6 @@
       </ImageView>
       <Button fx:id="botonReset" layoutX="657.0" layoutY="358.0" mnemonicParsing="false" onAction="#resetearVentana" prefHeight="24.0" prefWidth="150.0" text="Resetear" />
       <Button fx:id="botonMostrarDatos" layoutX="657.0" layoutY="322.0" mnemonicParsing="false" onAction="#mostrarDatosTabla" prefHeight="24.0" prefWidth="150.0" text="Mostrar Datos" />
+      <Button fx:id="botonCargarBaseDatos" layoutX="640.0" layoutY="488.0" mnemonicParsing="false" onAction="#cargarBaseDatosConFichero" text="Cargar Base Datos por Defecto" />
    </children>
 </AnchorPane>
