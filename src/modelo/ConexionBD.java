@@ -57,9 +57,12 @@ public class ConexionBD {
   }
 
   /**
-   * Método estático que devuelve una conexion. llama al método conexión()
+   * Método estático que devuelve una conexion. llama al método conexión() con
+   * un parámetro( en este caso con las credenciales de una conexión a la base
+   * de datos creada temperaturas_2019
    *
-   * @return tipo Conexcion con una conexión.
+   * @return tipo Conexion con una conexión a la base de datos
+   * temperaturas_2019.
    * @throws Exception Lanza excepciones que viene de otro método.
    */
   public static Connection conexion() throws Exception {
@@ -67,9 +70,12 @@ public class ConexionBD {
   }
 
   /**
-   * Método stático que devuelve una conexión. llama al método conexion().
+   * Método stático que devuelve una conexión. llama al método conexion()con un
+   * parámetro (en este caso lascredenciales de coenxión son al sistema gestor
+   * de base de datos, sin ninguna base de datos expecífica para crear una base
+   * de datos.
    *
-   * @return tipo Conexcion con una conexión.
+   * @return tipo Conexcion con una conexión al SGBD
    * @throws Exception Lanza excepciones que viene de otro método.
    */
   public static Connection conexionDirecta() throws Exception {
@@ -82,7 +88,7 @@ public class ConexionBD {
    * @throws Exception
    */
   public static void generarBaseDatos() throws Exception {
-    //Se carga en una variable la conexión directa al gestor de la base de datos sin entrar en ninguna tabla.
+    //Se carga en una variable la conexión directa al gestor de la base de datos sin entrar en ninguna base de datos.
     Connection conexion = conexionDirecta();
 
     //Se crea una isntancia de un StringBuider para cargar las sentencias de SQL
@@ -114,13 +120,13 @@ public class ConexionBD {
         //Volvemos a leer otra línea
         linea = buffer.readLine();
       }//Excepciones
-    } catch (SQLException e) {
+    } catch (SQLException e) {//Control de excepciones 
       throw new SQLException("Error SQL: " + e.getMessage());
     } catch (NullPointerException e) {
       throw new NullPointerException("No se ha podido conectar a la base de datos: " + e.getMessage());
     } catch (Exception e) {
       throw new Exception("Error: " + e.getMessage());
-    } finally {//Finalmete cerramos la conexión 
+    } finally {
       try {
         if (statement != null) {
           statement.close();
