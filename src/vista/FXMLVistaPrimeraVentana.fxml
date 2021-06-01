@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="920.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
+<AnchorPane prefHeight="579.0" prefWidth="920.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
    <children>
       <TableView fx:id="tablaMediciones" layoutX="37.0" layoutY="134.0" onKeyPressed="#selectcionarTeclado" onMouseClicked="#devolverMedicionTabla" prefHeight="334.0" prefWidth="575.0">
         <columns>

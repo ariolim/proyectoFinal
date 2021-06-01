@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
@@ -129,7 +130,10 @@ public class FXMLPrimeraVentanaController implements Initializable {
    */
   @FXML
   private void devolverMedicionTabla(MouseEvent event) {
-    botonModificar.setDisable(false);
+    Medicion medicion = tablaMediciones.getSelectionModel().getSelectedItem();
+    if (medicion != null) {
+      botonModificar.setDisable(false);
+    }
   }
 
   /**
@@ -260,7 +264,9 @@ public class FXMLPrimeraVentanaController implements Initializable {
    */
   @FXML
   private void selectcionarTeclado(KeyEvent event) {
-    modificarMedicionSeleccionada();
+    if (event.getCode() == KeyCode.ENTER) {
+      modificarMedicionSeleccionada();
+    }
   }
 
   /**
@@ -332,9 +338,11 @@ public class FXMLPrimeraVentanaController implements Initializable {
       //Instanciamos una nueva scena con los elementos cargados en el root
       Scene scene = new Scene(root);
       Stage stage = new Stage();//Instanciamos un nuevo scenario
+      stage.setTitle("Modificaciones");
       //La modalidad del nuevo escenario será aplicación modal (para que no se pueda realizaracciones con la ventana nueva abierta.
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setScene(scene);//Cargamos el escenario con la escena
+      stage.setResizable(false);//ponemos para que no se pueda cambiar el tamño de la ventana
       //Este método muestra la ventana y deja el evento en parada para que e pueda realizar otro eventos en la nueva ventana y no pase la ejecución del programa de esta linea esta que se cierra la ventanan nueva.
       stage.showAndWait();
       comoBoxProvincias.requestFocus();

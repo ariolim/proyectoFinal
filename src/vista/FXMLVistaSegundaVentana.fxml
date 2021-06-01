@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="310.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLSegundaVentanaController">
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="310.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLSegundaVentanaController">
    <children>
       <TextField fx:id="textF_Tem_Min" layoutX="71.0" layoutY="85.0" onAction="#cambioTemperaturaMinima" />
       <TextField fx:id="textF_Tem_Med" layoutX="71.0" layoutY="152.0" onAction="#cambioTem_Media" />

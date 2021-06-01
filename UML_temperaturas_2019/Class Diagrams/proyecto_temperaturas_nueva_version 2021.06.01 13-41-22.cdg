@@ -181,6 +181,10 @@
         </Method>
         <Method name="cargarComboMeses" returnType="void" visibility="private"/>
         <Method name="cargarComboProvincias" returnType="void" visibility="private"/>
+        <Method name="modificarMedicionSeleccionada" returnType="void" visibility="private"/>
+        <Method name="selectcionarTeclado" returnType="void" visibility="private">
+          <Argument type="KeyEvent" name="event"/>
+        </Method>
       </Methods>
     </Class>
     <Class name="Principal" package="controlador" visibility="public" xPosition="27.0" yPosition="137.0">
@@ -327,23 +331,23 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaObservableMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Medicion&gt;"/>
-    <HasRelation name="controladorPrimeraVentana" source="controlador.FXMLPrimeraVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.Provincia" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tablaMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaMediciones" source="modelo.Provincia" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicion&gt;"/>
-    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="ctrl1Ventana" source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.Medicion" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaProvincias" source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
-    <HasRelation name="medicionAux" source="controlador.FXMLSegundaVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Medicion" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaProvincias" source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
+    <HasRelation name="controladorPrimeraVentana" source="controlador.FXMLPrimeraVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="medicionAux" source="controlador.FXMLSegundaVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tablaMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaMediciones" source="modelo.Provincia" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicion&gt;"/>
+    <HasRelation name="mes" source="modelo.Medicion" target="modelo.Meses" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ctrl1Ventana" source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="listaProvincias" source="controlador.Principal" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
     <UseRelation source="modelo.Provincia" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mes" source="modelo.Medicion" target="modelo.Meses" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaObservableMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Medicion&gt;"/>
+    <UseRelation source="modelo.Provincia" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

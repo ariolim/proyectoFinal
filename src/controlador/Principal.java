@@ -61,8 +61,9 @@ public class Principal extends Application {
       //Creación de del escenario y carga de la vista de la ventana principal
       Parent root = FXMLLoader.load(getClass().getResource("/vista/FXMLVistaPrimeraVentana.fxml"));
       Scene scene = new Scene(root);
-      stage.setTitle("Temperaturas");
+      stage.setTitle("Temperaturas y precipitaciones");
       stage.setScene(scene);
+      stage.setResizable(false);
       stage.show();
     } catch (Exception ex) {
       ClaseAlertas.alertasErrores("Error", ex.getMessage());
