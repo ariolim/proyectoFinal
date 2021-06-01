@@ -91,7 +91,10 @@ public class FXMLPrimeraVentanaController implements Initializable {
     cargarComboMeses();
     cargarComboProvincias();
     comoBoxProvincias.requestFocus();
-
+    botonModificar.setDisable(true);
+    botonMostrarDatos.setDisable(true);
+    
+    
     listaObservableMediciones = FXCollections.observableArrayList();
 
     tablaMediciones.setItems(listaObservableMediciones);
@@ -101,16 +104,19 @@ public class FXMLPrimeraVentanaController implements Initializable {
     columna_tem_Max.setCellValueFactory(new PropertyValueFactory("tem_max"));
     columna_Precipitaciones.setCellValueFactory(new PropertyValueFactory("preci_media"));
     columnaMeses.setCellValueFactory(new PropertyValueFactory("mes"));
+    
 
   }
 
   @FXML
   private void devolverMedicionTabla(MouseEvent event) {
+    botonModificar.setDisable(false);
     
   }
 
   @FXML
   private void selectcionarComboProvincias(MouseEvent event) {
+    botonMostrarDatos.setDisable(false);
   }
 
   @FXML
@@ -121,12 +127,15 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private void botonModificarMedicion(ActionEvent event) {
     try {
       
-      
+      if (tablaMediciones.getSelectionModel().getTableView().getId()==null) {
+        ClaseAlertas.alertasErrores("Mensje", "Seleccione una medición para modificar");
+        
+      }
       
       
       
       //Cargar la vista de la nueva ventana.
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLSegundaVentana.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLVistaSegundaVentana.fxml"));
       //Carga en el padre o root toso los elementos que contendrá la vista.
       Parent root = loader.load();
       //Instaancioamos el controlador de la segunda ventana para traernos la Medicion
@@ -154,6 +163,8 @@ public class FXMLPrimeraVentanaController implements Initializable {
     comoBoxProvincias.requestFocus();
     listaObservableMediciones.clear();
     tablaMediciones.refresh();
+    botonMostrarDatos.setDisable(true);
+    botonModificar.setDisable(true);
   }
 
   /**
@@ -173,6 +184,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
       }
       //Si el combobox de provincias tiene una provincia seleccionada y el comboBox de meses no tiene valor
       if (comoBoxProvincias.getValue() != null && comboMeses.getValue() == null) {
+        
         //Recorro la lista de provincias y si el nombre de la provincia coincide con el valor del combobox carga el observable con todas las mediciones del año de esa provincia
         for (Provincia provincia : listaProvincias) {
           if (provincia.getNombre().equalsIgnoreCase(comoBoxProvincias.getValue().toString())) {
