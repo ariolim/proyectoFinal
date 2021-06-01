@@ -68,7 +68,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
   @FXML
   private Button botonCargarBaseDatos;
   /**
-   *
+   * Atributo para cargar una instancia del controlador de la primera ventana
    */
   FXMLPrimeraVentanaController controladorPrimeraVentana;
 
@@ -83,26 +83,35 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private ObservableList<Medicion> listaObservableMediciones;
 
   /**
-   * Método de inicio de la vista. En la clase se carga la lista de Provincias
+   * Método de inicio de la vista.En la clase se carga la lista de Provincias
    * que viene de la clase principal (Sea cargada del fichero excel o de la base
    * de datos.
+   *
+   * @param url
+   * @param rb
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
 
+    //Inicialicamos el atributo del controlador con la instancia actual del controlador.
     controladorPrimeraVentana = this;
 
+    //Cargamos la lista de provincias con la lista de provincias de la clase Principal
     listaProvincias = Principal.listaProvincias;
+    //Cargamos los combox con por medio de sus métodos privados
     cargarComboMeses();
     cargarComboProvincias();
+    //Requerimos focus enel combo de provincias
     comoBoxProvincias.requestFocus();
+    //En principio desabilitamos los botones modificar y mostrar datos
     botonModificar.setDisable(true);
     botonMostrarDatos.setDisable(true);
-
+    //inicializamos el observable de mediciones
     listaObservableMediciones = FXCollections.observableArrayList();
-
+    //Cargamos la tableView con la lista observable de mediciones
     tablaMediciones.setItems(listaObservableMediciones);
 
+    //Cargamos las columnas de la tableView con los diferentes atributos de un Medicion
     columnaTem_min.setCellValueFactory(new PropertyValueFactory("tem_min"));
     columna_Tem_Med.setCellValueFactory(new PropertyValueFactory("tem_med"));
     columna_tem_Max.setCellValueFactory(new PropertyValueFactory("tem_max"));
@@ -121,9 +130,14 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private void devolverMedicionTabla(MouseEvent event) {
     botonModificar.setDisable(false);
     botonModificar.requestFocus();
-
   }
 
+  /**
+   * Evento que habilita el botón de mostrar datos cuando el combo de provincias
+   * contiene valor
+   *
+   * @param event
+   */
   @FXML
   private void selectcionarComboProvincias(MouseEvent event) {
     botonMostrarDatos.setDisable(false);
@@ -133,6 +147,13 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private void selecccionComboMeses(MouseEvent event) {
   }
 
+  /**
+   * Evento para modificar una medición. cuando se pulsa el botón modificar se
+   * carga una nueva ventana y en esta se muestra la elección de medición para
+   * modificar
+   *
+   * @param event
+   */
   @FXML
   private void botonModificarMedicion(ActionEvent event) {
     try {
@@ -304,5 +325,4 @@ public class FXMLPrimeraVentanaController implements Initializable {
       comoBoxProvincias.getItems().add(provincia.getNombreProvincia());
     }
   }
-
 }
