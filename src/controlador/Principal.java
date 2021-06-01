@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modelo.ConexionBD;
-import modelo.GestoinBDTablaMediciones;
+import modelo.GestionBDTablaMediciones;
 import modelo.LeerExcelMediciones;
 import modelo.Provincia;
 
@@ -52,11 +52,11 @@ public class Principal extends Application {
       //llama al método para generar la base de datos
       ConexionBD.generarBaseDatos();
       //llama al método obtenerFilasTabla() para saber si la tabla esta vacía
-      if (GestoinBDTablaMediciones.obtenerFilasTabla()) {
+      if (GestionBDTablaMediciones.obtenerFilasTabla()) {
         //carga de la lista.
         cargarListaFichero();
       } else {//SI la tabla de la base de datos contiene mediciones carga la lista de provincias con las mediciones de la base de datos.
-        listaProvincias = GestoinBDTablaMediciones.generarListaProvincias();
+        listaProvincias = GestionBDTablaMediciones.generarListaProvincias();
       }
       //Creación de del escenario y carga de la vista de la ventana principal
       Parent root = FXMLLoader.load(getClass().getResource("/vista/FXMLVistaPrimeraVentana.fxml"));
@@ -80,7 +80,7 @@ public class Principal extends Application {
     listaProvincias = LeerExcelMediciones.leerFichero();
     //Recorre la lista de provincias y inserta las mediciones en la base de datos.
     for (Provincia provincia : listaProvincias) {
-      GestoinBDTablaMediciones.insertarMediciones(provincia);
+      GestionBDTablaMediciones.insertarMediciones(provincia);
     }
   }
 }

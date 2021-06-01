@@ -7,13 +7,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * <main>GestoinBDTablaMediciones</main>
+ * <main>GestionBDTablaMediciones</main>
  *
  * @email al.andres.rios.lima@iesportada.es
  * @author Andres Ríos Lima
  * @version 1.0
  */
-public class GestoinBDTablaMediciones {
+public class GestionBDTablaMediciones {
 
   /**
    * El método recibe de la base de datos los resultados de la tabla mediciones
@@ -49,7 +49,7 @@ public class GestoinBDTablaMediciones {
       sentencia = ConexionBD.conexion().prepareStatement(sql);
       /*
       *
-      */
+       */
       result = sentencia.executeQuery();
 
       while (result.next()) {
@@ -159,7 +159,6 @@ public class GestoinBDTablaMediciones {
       if (result.next()) {
         vacio = false;
       }
-
     } catch (SQLException e) {
       throw new SQLException("Error SQL: " + e.getMessage());
     } catch (NullPointerException e) {
@@ -198,4 +197,48 @@ public class GestoinBDTablaMediciones {
     }
     return indice;
   }
+
+  /**
+   *
+   * @param nombreProvincia
+   * @param mes
+   * @param medicion
+   * @throws Exception
+   */
+  public static void actualizarMediciones(Medicion medicion) throws Exception {
+
+    String sql = "update mediciones set tem_med_min = ? ,tem_med_med = ?, tem_med_max=?,prec_media=? where nombre_provincia = ? and mes = ?";
+
+    PreparedStatement sentencia = null;
+
+    String nombre = medicion.getNombreProvincia();
+    Meses mes = medicion.getMes();
+    Medicion medicionAux = medicion;
+    try {
+      sentencia = ConexionBD.conexion().prepareStatement(sql);
+
+      sentencia.setDouble(1, medicionAux.getTem_min());
+      sentencia.setDouble(2, medicionAux.getTem_med());
+      sentencia.setDouble(3, medicionAux.getTem_max());
+      sentencia.setDouble(4, medicionAux.getPreci_media());
+      sentencia.setString(5, nombre);
+      sentencia.setString(6, mes.toString().toUpperCase());
+      sentencia.executeUpdate();
+    } catch (SQLException e) {
+      throw new SQLException("Error SQL: " + e.getMessage());
+    } catch (NullPointerException e) {
+      throw new NullPointerException("No se ha podido a la base de datos: " + e.getMessage());
+    } catch (Exception e) {
+      throw new Exception("Error: " + e.getMessage());
+    } finally {
+      try {
+        if (sentencia != null) {
+          sentencia.close();
+        }
+      } catch (SQLException e) {
+        throw new SQLException("Error SQL: " + e.getMessage());
+      }
+    }
+  }
+
 }

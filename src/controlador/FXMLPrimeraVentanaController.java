@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import modelo.GestionBDTablaMediciones;
 import modelo.Medicion;
 import modelo.Meses;
 import modelo.Provincia;
@@ -171,18 +172,23 @@ public class FXMLPrimeraVentanaController implements Initializable {
   @FXML
   public void recibirMedicionModificadaVenDos(Medicion medicion, double tem_min, double tem_med, double tem_max, double preci) {
 
-    /* 
-     * Se setean los nuevos datos en la medición (esta medición al cambiar sus valores cambia en las listas
-     * de la contenga puesto que lo que se teiene es una referencia a memoria de esta medición, 
-     * por eso no hace falta cambiarla o introducir una nueva en los observables ni en los arrayList que se encuentran
-     */
-    medicion.setTem_min(tem_min);
-    medicion.setTem_med(tem_med);
-    medicion.setTem_max(tem_max);
-    medicion.setPreci_media(preci);
-    //Se refresca la tabla para mostrar los datos modificados.
-    tablaMediciones.refresh();
+    try {
+      /*
+      * Se setean los nuevos datos en la medición (esta medición al cambiar sus valores cambia en las listas
+      * de la contenga puesto que lo que se teiene es una referencia a memoria de esta medición,
+      * por eso no hace falta cambiarla o introducir una nueva en los observables ni en los arrayList que se encuentran
+       */
+      medicion.setTem_min(tem_min);
+      medicion.setTem_med(tem_med);
+      medicion.setTem_max(tem_max);
+      medicion.setPreci_media(preci);
+      //Se refresca la tabla para mostrar los datos modificados.
+      tablaMediciones.refresh();
 
+      GestionBDTablaMediciones.actualizarMediciones(medicion);
+    } catch (Exception ex) {
+      ClaseAlertas.alertasErrores("error", ex.getMessage());
+    }
   }
 
   /**
