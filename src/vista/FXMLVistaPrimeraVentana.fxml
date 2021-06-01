@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLVistaVentanaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
    <children>
       <TableView fx:id="tablaMediciones" layoutX="34.0" layoutY="118.0" onMouseClicked="#devolverMedicionTabla" prefHeight="382.0" prefWidth="575.0">
         <columns>

@@ -4,7 +4,6 @@ package controlador;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +29,7 @@ import modelo.Provincia;
 import modelo.ProvinciasEnum;
 
 /**
- * <main>FXMLVistaVentanaPrincipalController</main>
+ * <main>FXMLPrimeraVentanaController</main>
  * <p>
  * Clase controladora de la ventana Principal</p>
  *
@@ -38,7 +37,7 @@ import modelo.ProvinciasEnum;
  * @author Andres Ríos Lima
  * @version 1.0
  */
-public class FXMLVistaVentanaPrincipalController implements Initializable {
+public class FXMLPrimeraVentanaController implements Initializable {
 
   /**
    * Atributos de uso de la clase controladora
@@ -65,6 +64,11 @@ public class FXMLVistaVentanaPrincipalController implements Initializable {
   private Button botonReset;
   @FXML
   private Button botonMostrarDatos;
+  
+  /**
+   * 
+   */
+  
 
   /**
    * Atributo con la lista de provincias.
@@ -102,6 +106,7 @@ public class FXMLVistaVentanaPrincipalController implements Initializable {
 
   @FXML
   private void devolverMedicionTabla(MouseEvent event) {
+    
   }
 
   @FXML
@@ -136,7 +141,7 @@ public class FXMLVistaVentanaPrincipalController implements Initializable {
       stage.showAndWait();
       tablaMediciones.refresh();
     } catch (IOException ex) {
-      Logger.getLogger(FXMLVistaVentanaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(FXMLPrimeraVentanaController.class.getName()).log(Level.SEVERE, null, ex);
     }
     
     
