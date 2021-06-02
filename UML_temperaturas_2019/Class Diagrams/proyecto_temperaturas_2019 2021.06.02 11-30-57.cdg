@@ -2,7 +2,7 @@
 
 <ClassDiagram name="proyecto_temperaturas_2019">
   <ClassDiagramComponents>
-    <Class name="Provincia" package="modelo" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="Provincia" package="modelo" visibility="public" xPosition="1296.0" yPosition="478.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="listaMediciones" type="ArrayList&lt;Medicion&gt;" visibility="private"/>
@@ -40,7 +40,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Medicion" package="modelo" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="Medicion" package="modelo" visibility="public" xPosition="97.0" yPosition="6.0">
       <Fields>
         <Field name="NOMBRE_PROVINCIA" type="String" visibility="private" isFinal="true"/>
         <Field name="tem_min" type="double" visibility="private"/>
@@ -87,7 +87,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GestionBDTablaMediciones" package="modelo" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="GestionBDTablaMediciones" package="modelo" visibility="public" xPosition="314.0" yPosition="1009.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -106,23 +106,7 @@
         <Method name="truncarTablaMediciones" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Enum name="Meses" package="modelo" visibility="public" xPosition="920.0" yPosition="20.0">
-      <Literals>
-        <Literal name="ENERO"/>
-        <Literal name="FEBRERO"/>
-        <Literal name="MARZO"/>
-        <Literal name="ABRIL"/>
-        <Literal name="MAYO"/>
-        <Literal name="JUNIO"/>
-        <Literal name="JULIO"/>
-        <Literal name="AGOSTO"/>
-        <Literal name="SEPTIEMBRE"/>
-        <Literal name="OCTUBRE"/>
-        <Literal name="NOVIEMBRE"/>
-        <Literal name="DICIEMBRE"/>
-      </Literals>
-    </Enum>
-    <Class name="MediaAnual" package="modelo" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="MediaAnual" package="modelo" visibility="public" xPosition="2239.0" yPosition="391.0">
       <Fields>
         <Field name="nombreProvincia" type="String" visibility="package"/>
         <Field name="temMinAnual" type="double" visibility="package"/>
@@ -143,7 +127,7 @@
         <Method name="getPreciMedAnual" returnType="double" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ConexionBD" package="modelo" visibility="public" xPosition="1520.0" yPosition="20.0">
+    <Class name="ConexionBD" package="modelo" visibility="public" xPosition="2206.0" yPosition="20.0">
       <Fields>
         <Field name="ficheroCredenciales" type="String" visibility="private" isStatic="true"/>
         <Field name="ficheroCredencialesSinBd" type="String" visibility="private" isStatic="true"/>
@@ -158,7 +142,7 @@
         <Method name="generarBaseDatos" returnType="void" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="LeerExcelMediciones" package="modelo" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Class name="LeerExcelMediciones" package="modelo" visibility="public" xPosition="2197.0" yPosition="226.0">
       <Fields>
         <Field name="fichero" type="String" visibility="private" isStatic="true"/>
       </Fields>
@@ -171,63 +155,7 @@
         </Method>
       </Methods>
     </Class>
-    <Enum name="ProvinciasEnum" package="modelo" visibility="public" xPosition="2120.0" yPosition="20.0">
-      <Literals>
-        <Literal name="A_CORUÑA"/>
-        <Literal name="ALBACETE"/>
-        <Literal name="ALICANTEALACANT"/>
-        <Literal name="ALMERIA"/>
-        <Literal name="ARABAALAVA"/>
-        <Literal name="ASTURIAS"/>
-        <Literal name="AVILA"/>
-        <Literal name="BADAJOZ"/>
-        <Literal name="ILLES_BALEARS"/>
-        <Literal name="BARCELONA"/>
-        <Literal name="BIZKAIA"/>
-        <Literal name="BURGOS"/>
-        <Literal name="CACERES"/>
-        <Literal name="CADIZ"/>
-        <Literal name="CANTABRIA"/>
-        <Literal name="CASTELLONCASTELLÓ"/>
-        <Literal name="CEUTA"/>
-        <Literal name="CIUDADREAL"/>
-        <Literal name="CORDOBA"/>
-        <Literal name="CUENCA"/>
-        <Literal name="GIPUZKOA"/>
-        <Literal name="GIRONA"/>
-        <Literal name="GRANADA"/>
-        <Literal name="GUADALAJARA"/>
-        <Literal name="HUELVA"/>
-        <Literal name="HUESCA"/>
-        <Literal name="JAEN"/>
-        <Literal name="LA_RIOJA"/>
-        <Literal name="LAS_PALMAS"/>
-        <Literal name="LEON"/>
-        <Literal name="LLEIDA"/>
-        <Literal name="LUGO"/>
-        <Literal name="MADRID"/>
-        <Literal name="MALAGA"/>
-        <Literal name="MELILLA"/>
-        <Literal name="MURCIA"/>
-        <Literal name="NAVARRA"/>
-        <Literal name="OURENSE"/>
-        <Literal name="PALENCIA"/>
-        <Literal name="PONTEVEDRA"/>
-        <Literal name="SALAMANCA"/>
-        <Literal name="SANTA_CRUZ_DE_TENERIFE"/>
-        <Literal name="SEGOVIA"/>
-        <Literal name="SEVILLA"/>
-        <Literal name="SORIA"/>
-        <Literal name="TARRAGONA"/>
-        <Literal name="TERUEL"/>
-        <Literal name="TOLEDO"/>
-        <Literal name="VALENCIAVALÈNCIA"/>
-        <Literal name="VALLADOLID"/>
-        <Literal name="ZAMORA"/>
-        <Literal name="ZARAGOZA"/>
-      </Literals>
-    </Enum>
-    <Class name="FXMLPrimeraVentanaController" package="controlador" visibility="public" xPosition="20.0" yPosition="420.0">
+    <Class name="FXMLPrimeraVentanaController" package="controlador" visibility="public" xPosition="1000.0" yPosition="1147.0">
       <Fields>
         <Field name="tablaMediciones" type="TableView&lt;Medicion&gt;" visibility="private"/>
         <Field name="columnaMeses" type="TableColumn&lt;?, ?&gt;" visibility="private"/>
@@ -293,7 +221,7 @@
         <Method name="modificarMedicionSeleccionada" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="FXMLTerceraVentanaController" package="controlador" visibility="public" xPosition="320.0" yPosition="420.0">
+    <Class name="FXMLTerceraVentanaController" package="controlador" visibility="public" xPosition="2008.0" yPosition="915.0">
       <Fields>
         <Field name="tableViewMediasAnuales" type="TableView&lt;MediaAnual&gt;" visibility="private"/>
         <Field name="tableColNomProvincia" type="TableColumn&lt;?, ?&gt;" visibility="private"/>
@@ -314,7 +242,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Principal" package="controlador" visibility="public" xPosition="620.0" yPosition="420.0">
+    <Class name="Principal" package="controlador" visibility="public" xPosition="1259.0" yPosition="201.0">
       <Fields>
         <Field name="listaProvincias" type="ArrayList&lt;Provincia&gt;" visibility="public" isStatic="true"/>
       </Fields>
@@ -329,7 +257,7 @@
         <Method name="cargarListaFichero" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="ClaseAlertas" package="controlador" visibility="public" xPosition="920.0" yPosition="420.0">
+    <Class name="ClaseAlertas" package="controlador" visibility="public" xPosition="2180.0" yPosition="1280.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -347,7 +275,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="FXMLSegundaVentanaController" package="controlador" visibility="public" xPosition="1220.0" yPosition="420.0">
+    <Class name="FXMLSegundaVentanaController" package="controlador" visibility="public" xPosition="10.0" yPosition="1362.0">
       <Fields>
         <Field name="textF_Tem_Min" type="TextField" visibility="private"/>
         <Field name="textF_Tem_Med" type="TextField" visibility="private"/>
@@ -384,29 +312,101 @@
         </Method>
       </Methods>
     </Class>
+    <Enum name="Meses" package="modelo" visibility="public" xPosition="1887.0" yPosition="30.0">
+      <Literals>
+        <Literal name="ENERO"/>
+        <Literal name="FEBRERO"/>
+        <Literal name="MARZO"/>
+        <Literal name="ABRIL"/>
+        <Literal name="MAYO"/>
+        <Literal name="JUNIO"/>
+        <Literal name="JULIO"/>
+        <Literal name="AGOSTO"/>
+        <Literal name="SEPTIEMBRE"/>
+        <Literal name="OCTUBRE"/>
+        <Literal name="NOVIEMBRE"/>
+        <Literal name="DICIEMBRE"/>
+      </Literals>
+    </Enum>
+    <Enum name="ProvinciasEnum" package="modelo" visibility="public" xPosition="2556.0" yPosition="20.0">
+      <Literals>
+        <Literal name="A_CORUÑA"/>
+        <Literal name="ALBACETE"/>
+        <Literal name="ALICANTEALACANT"/>
+        <Literal name="ALMERIA"/>
+        <Literal name="ARABAALAVA"/>
+        <Literal name="ASTURIAS"/>
+        <Literal name="AVILA"/>
+        <Literal name="BADAJOZ"/>
+        <Literal name="ILLES_BALEARS"/>
+        <Literal name="BARCELONA"/>
+        <Literal name="BIZKAIA"/>
+        <Literal name="BURGOS"/>
+        <Literal name="CACERES"/>
+        <Literal name="CADIZ"/>
+        <Literal name="CANTABRIA"/>
+        <Literal name="CASTELLONCASTELLÓ"/>
+        <Literal name="CEUTA"/>
+        <Literal name="CIUDADREAL"/>
+        <Literal name="CORDOBA"/>
+        <Literal name="CUENCA"/>
+        <Literal name="GIPUZKOA"/>
+        <Literal name="GIRONA"/>
+        <Literal name="GRANADA"/>
+        <Literal name="GUADALAJARA"/>
+        <Literal name="HUELVA"/>
+        <Literal name="HUESCA"/>
+        <Literal name="JAEN"/>
+        <Literal name="LA_RIOJA"/>
+        <Literal name="LAS_PALMAS"/>
+        <Literal name="LEON"/>
+        <Literal name="LLEIDA"/>
+        <Literal name="LUGO"/>
+        <Literal name="MADRID"/>
+        <Literal name="MALAGA"/>
+        <Literal name="MELILLA"/>
+        <Literal name="MURCIA"/>
+        <Literal name="NAVARRA"/>
+        <Literal name="OURENSE"/>
+        <Literal name="PALENCIA"/>
+        <Literal name="PONTEVEDRA"/>
+        <Literal name="SALAMANCA"/>
+        <Literal name="SANTA_CRUZ_DE_TENERIFE"/>
+        <Literal name="SEGOVIA"/>
+        <Literal name="SEVILLA"/>
+        <Literal name="SORIA"/>
+        <Literal name="TARRAGONA"/>
+        <Literal name="TERUEL"/>
+        <Literal name="TOLEDO"/>
+        <Literal name="VALENCIAVALÈNCIA"/>
+        <Literal name="VALLADOLID"/>
+        <Literal name="ZAMORA"/>
+        <Literal name="ZARAGOZA"/>
+      </Literals>
+    </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="controlador.FXMLTerceraVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaMediciones" source="modelo.Provincia" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicion&gt;"/>
     <HasRelation name="tablaMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="modelo.Provincia" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="controladorPrimeraVentana" source="controlador.FXMLPrimeraVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tableViewMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaMediciones" source="modelo.Provincia" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicion&gt;"/>
+    <HasRelation name="mes" source="modelo.Medicion" target="modelo.Meses" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLTerceraVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="medicionAux" source="controlador.FXMLSegundaVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaObservableMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Medicion&gt;"/>
+    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaProvincias" source="controlador.Principal" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
+    <HasRelation name="listaProvincias" source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
     <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="listaObservableMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;MediaAnual&gt;"/>
-    <HasRelation name="listaProvincias" source="controlador.Principal" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
-    <HasRelation name="mes" source="modelo.Medicion" target="modelo.Meses" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="medicionAux" source="controlador.FXMLSegundaVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="controladorPrimeraVentana" source="controlador.FXMLPrimeraVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tableViewMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaObservableMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Medicion&gt;"/>
-    <HasRelation name="listaProvincias" source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
-    <UseRelation source="modelo.Provincia" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.Medicion" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="ctrl1Ventana" source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Medicion" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Provincia" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
