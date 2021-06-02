@@ -14,7 +14,7 @@
       <Button fx:id="botonGuardar" layoutX="83.0" layoutY="358.0" mnemonicParsing="false" onAction="#eventoBotonGuardar" text="Guardar Y Cerrar" />
       <Label layoutX="73.0" layoutY="58.0" prefHeight="16.0" prefWidth="171.0" text="Temperatura Mínima:" />
       <Label layoutX="72.0" layoutY="125.0" prefHeight="16.0" prefWidth="171.0" text="Temperatura Media:" />
-      <Label layoutX="71.0" layoutY="195.0" prefHeight="16.0" prefWidth="171.0" text="Temperatura Maxima:" />
-      <Label layoutX="73.0" layoutY="265.0" prefHeight="16.0" prefWidth="171.0" text="Precipitacion:" />
+      <Label layoutX="71.0" layoutY="195.0" prefHeight="16.0" prefWidth="171.0" text="Temperatura Máxima:" />
+      <Label layoutX="73.0" layoutY="265.0" prefHeight="16.0" prefWidth="171.0" text="Precipitación:" />
    </children>
 </AnchorPane>
