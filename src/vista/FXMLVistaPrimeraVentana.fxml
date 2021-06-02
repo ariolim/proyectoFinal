@@ -23,7 +23,7 @@
       <ComboBox fx:id="comoBoxProvincias" layoutX="668.0" layoutY="150.0" onMouseClicked="#selectcionarComboProvincias" prefHeight="24.0" prefWidth="179.0" />
       <ComboBox fx:id="comboMeses" layoutX="668.0" layoutY="212.0" onMouseClicked="#selecccionComboMeses" prefHeight="24.0" prefWidth="179.0" />
       <Button fx:id="botonModificar" layoutX="683.0" layoutY="391.0" mnemonicParsing="false" onAction="#botonModificarMedicion" prefHeight="24.0" prefWidth="163.0" text="Modificar Medición" />
-      <Label id="titulo" layoutX="99.0" layoutY="26.0" prefHeight="50.0" prefWidth="689.0" text="Relacion temperaturas y precipitaciones Provincias españolas 2019">
+      <Label id="titulo" layoutX="99.0" layoutY="26.0" prefHeight="50.0" prefWidth="689.0" text="Relación temperaturas y precipitaciones provincias españolas 2019">
          <font>
             <Font size="18.0" />
          </font>

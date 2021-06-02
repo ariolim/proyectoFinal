@@ -16,8 +16,7 @@
             <TableColumn fx:id="tableColPreci" prefWidth="148.0" text="PRECIPITACION" />
         </columns>
       </TableView>
-      <Label id="tituloTerceraVentana" layoutX="60.0" layoutY="36.0" prefHeight="16.0" prefWidth="710.0" text="CALCULO MEDIAS ANUALES" textAlignment="CENTER">
-        
+      <Label id="tituloTerceraVentana" layoutX="60.0" layoutY="36.0" prefHeight="16.0" prefWidth="710.0" text="CÁLCULO MEDIAS ANUALES" textAlignment="CENTER">  
       </Label>
    </children>
 </AnchorPane>

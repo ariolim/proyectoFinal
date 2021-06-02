@@ -102,19 +102,22 @@ public class FXMLSegundaVentanaController implements Initializable {
    */
   @FXML
   private void eventoBotonGuardar(ActionEvent event) {
+    try {
+      //Carga de variables con los datos de los textField
+      double tem_min = Double.parseDouble(textF_Tem_Min.getText().replace(",", "."));
+      double tem_med = Double.parseDouble(textF_Tem_Med.getText().replace(",", "."));
+      double tem_max = Double.parseDouble(textF_Tem_Max.getText().replace(",", "."));
+      double prec = Double.parseDouble(textF_Precipitacion.getText().replace(",", "."));
 
-    //Carga de variables con los datos de los textField
-    double tem_min = Double.parseDouble(textF_Tem_Min.getText());
-    double tem_med = Double.parseDouble(textF_Tem_Med.getText());
-    double tem_max = Double.parseDouble(textF_Tem_Max.getText());
-    double prec = Double.parseDouble(textF_Precipitacion.getText());
-
-    //LLamada al método para recibir la medicion y los parámetros de modificación
-    ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
-    //Cuando se pulsa el boton cierra la ventana
-    Stage stage = (Stage) botonGuardar.getScene().getWindow();
-    GestorAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
-    stage.close();
+      //LLamada al método para recibir la medicion y los parámetros de modificación
+      ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
+      //Cuando se pulsa el boton cierra la ventana
+      Stage stage = (Stage) botonGuardar.getScene().getWindow();
+      GestorAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
+      stage.close();
+    } catch (NumberFormatException e) {
+      GestorAlertas.alertasErrores("Error", "Los valores introducidos no son correctos. ");
+    }
   }
 
   /**
@@ -131,12 +134,10 @@ public class FXMLSegundaVentanaController implements Initializable {
     medicionAux = medicion;
     //Se carga el controlador pasado por parámetros en una variable de instancia del controlador de la segunda ventana.
     ctrl1Ventana = escena1;
-
     //Carga de los textField con los valores de la medicion.
     textF_Tem_Min.setText(String.valueOf(medicion.getTem_min()));
     textF_Tem_Med.setText(String.valueOf(medicion.getTem_med()));
     textF_Tem_Max.setText(String.valueOf(medicion.getTem_max()));
     textF_Precipitacion.setText(String.valueOf(medicion.getPreci_media()));
-
   }
 }
