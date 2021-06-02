@@ -16,7 +16,7 @@ public class Medicion {
   /**
    * Atributos de una instancia de la clase.
    */
-  private String nombreProvincia;
+  private final String NOMBRE_PROVINCIA;
   private double tem_min;
   private double tem_med;
   private double tem_max;
@@ -27,6 +27,7 @@ public class Medicion {
    * Constructor de la clase donde le pasamos por parámetros las diferentes
    * temperaturas, la precipitación y al mes que pertenece
    *
+   * @param nombreProvincia tipo String con el nombre de la provincia.
    * @param tem_min tipo double con la tem_min
    * @param tem_med tipo double con la tem_med
    * @param tem_max tipo double con la tem_max
@@ -34,7 +35,7 @@ public class Medicion {
    * @param mes tipo Mes con el mes que corresponde
    */
   public Medicion(String nombreProvincia, double tem_min, double tem_med, double tem_max, double preci_media, Meses mes) {
-    this.nombreProvincia = nombreProvincia;
+    this.NOMBRE_PROVINCIA = nombreProvincia;
     this.tem_max = tem_max;
     this.tem_med = tem_med;
     this.tem_min = tem_min;
@@ -48,7 +49,7 @@ public class Medicion {
    * @return tipo String con el nombre de la provincia.
    */
   public String getNombreProvincia() {
-    return nombreProvincia;
+    return NOMBRE_PROVINCIA;
   }
 
   /**
@@ -149,7 +150,7 @@ public class Medicion {
   @Override
   public int hashCode() {
     int hash = 7;
-    hash = 41 * hash + Objects.hashCode(this.nombreProvincia);
+    hash = 41 * hash + Objects.hashCode(this.NOMBRE_PROVINCIA);
     hash = 41 * hash + Objects.hashCode(this.mes);
     return hash;
   }
@@ -173,7 +174,7 @@ public class Medicion {
       return false;
     }
     final Medicion other = (Medicion) obj;
-    if (!Objects.equals(this.nombreProvincia, other.nombreProvincia)) {
+    if (!Objects.equals(this.NOMBRE_PROVINCIA, other.NOMBRE_PROVINCIA)) {
       return false;
     }
     if (this.mes != other.mes) {

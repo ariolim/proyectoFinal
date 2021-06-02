@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -80,12 +78,21 @@ public class FXMLPrimeraVentanaController implements Initializable {
   /**
    * Atributo con la lista de provincias.
    */
-  private static ArrayList<Provincia> listaProvincias = new ArrayList<>();
+  private ArrayList<Provincia> listaProvincias = new ArrayList<>();
 
   /**
    * Lista Observable para mostrar las mediciones.
    */
   private ObservableList<Medicion> listaObservableMediciones;
+
+  /**
+   * Getter de la lista de provincias
+   *
+   * @return ArrayList de lista de provincias
+   */
+  public ArrayList<Provincia> getListaProvincias() {
+    return listaProvincias;
+  }
 
   /**
    * Método de inicio de la vista.En la clase se carga la lista de Provincias
@@ -174,13 +181,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
    */
   @FXML
   private void resetearVentana(ActionEvent event) {
-    comboMeses.setValue(null);
-    comoBoxProvincias.setValue(null);
-    comoBoxProvincias.requestFocus();
-    listaObservableMediciones.clear();
-    tablaMediciones.refresh();
-    botonMostrarDatos.setDisable(true);
-    botonModificar.setDisable(true);
+    resetDatos();
   }
 
   /**
@@ -257,6 +258,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
       //SI la opción elegida es afirmativa se produde la carga de la lista de provincias con los datos del fichero excel
       if (resultado.get() == ButtonType.OK) {
         listaProvincias = LeerExcelMediciones.leerFichero();
+        tablaMediciones.refresh();
         //Se trunca la tabla mediciones para que puedan insertarse los nuevo datos
         GestionBDTablaMediciones.truncarTablaMediciones();
         //Se recorre la lista de provincias y se llama al método para insertar mediciones
@@ -266,12 +268,19 @@ public class FXMLPrimeraVentanaController implements Initializable {
         //Finalmente, si todo ha salido correctamente salta una alerta de mensaje
         ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
       }
+      resetDatos();
       comoBoxProvincias.requestFocus();
     } catch (Exception ex) {//Control de exceciones
       ClaseAlertas.alertasErrores("error", ex.getMessage());
     }
   }
 
+  /**
+   * El evento llama una tercera ventana que contiene las medias totales anuales
+   * de todas las provincias sobre las mediciones
+   *
+   * @param event
+   */
   @FXML
   private void mostrarMediasAnuales(ActionEvent event) {
 
@@ -280,21 +289,25 @@ public class FXMLPrimeraVentanaController implements Initializable {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLVistaTerceraVentana.fxml"));
       //Carga en el padre o root toso los elementos que contendrá la vista.
       Parent root = loader.load();
+      //Instancioamos el controlador de la tercera ventana para poder llamar al sus métodos
+      FXMLTerceraVentanaController controladorTerVent = (FXMLTerceraVentanaController) loader.getController();
+      //llamamos por medido de la instancia a el método para llevarnos la instancia del controlador
+      controladorTerVent.recibirlistaProvincias(controladorPrimeraVentana);
 
       //Instanciamos una nueva scena con los elementos cargados en el root
       Scene scene = new Scene(root);
       Stage stage = new Stage();//Instanciamos un nuevo scenario
-      stage.setTitle("Modificaciones");
+      stage.setTitle("Medias anuales");
       //La modalidad del nuevo escenario será aplicación modal (para que no se pueda realizaracciones con la ventana nueva abierta.
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setScene(scene);//Cargamos el escenario con la escena
       stage.setResizable(false);//ponemos para que no se pueda cambiar el tamño de la ventana
       //Este método muestra la ventana y deja el evento en parada para que e pueda realizar otro eventos en la nueva ventana y no pase la ejecución del programa de esta linea esta que se cierra la ventanan nueva.
       stage.showAndWait();
+      comoBoxProvincias.requestFocus();
     } catch (IOException ex) {
       ClaseAlertas.alertasMensajes("Error", ex.getMessage());
     }
-
   }
 
   /**
@@ -349,8 +362,22 @@ public class FXMLPrimeraVentanaController implements Initializable {
   }
 
   /**
-   * Método privado que muestra que carga una nueva vista y en esta se muestra
-   * la selección hecha en la tabla
+   * método privado que resetea los combox , el observable, la tabla y
+   * desabilita los botones de mostrar datos y modificar
+   */
+  private void resetDatos() {
+    comboMeses.setValue(null);
+    comoBoxProvincias.setValue(null);
+    comoBoxProvincias.requestFocus();
+    listaObservableMediciones.clear();
+    tablaMediciones.refresh();
+    botonMostrarDatos.setDisable(true);
+    botonModificar.setDisable(true);
+  }
+
+  /**
+   * Método privado que carga una nueva vista y en esta se muestra la selección
+   * hecha en la tabla
    */
   private void modificarMedicionSeleccionada() {
     try {

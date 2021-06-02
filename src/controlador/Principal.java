@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import modelo.ConexionBD;
 import modelo.GestionBDTablaMediciones;
 import modelo.LeerExcelMediciones;
-import modelo.Medicion;
-import modelo.Meses;
 import modelo.Provincia;
 
 /**

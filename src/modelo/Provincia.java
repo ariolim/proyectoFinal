@@ -160,13 +160,15 @@ public class Provincia {
 
   /**
    * Método privado que calcula la media de los parámetros de las mediciones de
-   * una provincia
+   * una provincia. (La salida sale formateada a dos decimales)
    *
    * @param tipoParametro tipo entero con el parámatro exacto que vamos a
    * calcular la media.
-   * @return tipo double con la media del parámetro elegido.
+   * @return tipo double con la media del parámetro elegido.(La salida sale
+   * formateada a dos decimales)
    */
   private double calculoMediasAnuales(int tipoParametro) {
+
     double suma = 0;
 
     for (Medicion medicion : listaMediciones) {
@@ -185,6 +187,6 @@ public class Provincia {
           break;
       }
     }
-    return suma / listaMediciones.size();
+    return Math.round(suma / listaMediciones.size() * 100.0) / 100.0;
   }
 }

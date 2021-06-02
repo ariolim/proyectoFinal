@@ -11,9 +11,14 @@ import javafx.stage.Stage;
 import modelo.Medicion;
 
 /**
- * FXML Controller class
+ * <main>FXMLSegundaVentanaController</main>
+ * <p>
+ * Clase controladora de la segunda ventana. Esta muestra una medición para
+ * modificar sus datos</p>
  *
+ * @email al.andres.rios.lima@iesportada.es
  * @author Andres Ríos Lima
+ * @version 1.0
  */
 public class FXMLSegundaVentanaController implements Initializable {
 
@@ -33,7 +38,7 @@ public class FXMLSegundaVentanaController implements Initializable {
   private Medicion medicionAux;
 
   /**
-   * Initializes the controller class.
+   * Método inicial del controlador
    *
    * @param url
    * @param rb
@@ -87,6 +92,32 @@ public class FXMLSegundaVentanaController implements Initializable {
   }
 
   /**
+   * El evento guarda en variables los datos nuevos de los textField y, por
+   * medio de la variable cargada con la instancia del controlador primera
+   * clase, llama a un método público de este controladro que recive por
+   * parámetros la medición y los valores de los textField. Seguidamente cierra
+   * la ventana
+   *
+   * @param event
+   */
+  @FXML
+  private void eventoBotonGuardar(ActionEvent event) {
+
+    //Carga de variables con los datos de los textField
+    double tem_min = Double.parseDouble(textF_Tem_Min.getText());
+    double tem_med = Double.parseDouble(textF_Tem_Med.getText());
+    double tem_max = Double.parseDouble(textF_Tem_Max.getText());
+    double prec = Double.parseDouble(textF_Precipitacion.getText());
+
+    //LLamada al método para recibir la medicion y los parámetros de modificación
+    ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
+    //Cuando se pulsa el boton cierra la ventana
+    Stage stage = (Stage) botonGuardar.getScene().getWindow();
+    ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
+    stage.close();
+  }
+
+  /**
    * Método publico de una instancia del contolador de la segunda ventana. Este
    * recibe por parámetros una instancia del controlador de la primera ventana y
    * recibe la medicion seleccionada en la tabla para cargar los textField de la
@@ -107,31 +138,5 @@ public class FXMLSegundaVentanaController implements Initializable {
     textF_Tem_Max.setText(String.valueOf(medicion.getTem_max()));
     textF_Precipitacion.setText(String.valueOf(medicion.getPreci_media()));
 
-  }
-
-  /**
-   * El evento guarda en variables los datos nuevos de los textField y, por
-   * medio de la variable cargada con la instancia del controlador primera
-   * clase, llama a un método público de este controladro que recive por
-   * parámetros la medición y los valores de los textField. Seguidamente cierra
-   * la ventana
-   *
-   * @param event
-   */
-  @FXML
-  private void eventoBotonGuardar(ActionEvent event) {
-
-    double tem_min = Double.parseDouble(textF_Tem_Min.getText());
-    double tem_med = Double.parseDouble(textF_Tem_Med.getText());
-    double tem_max = Double.parseDouble(textF_Tem_Max.getText());
-    double prec = Double.parseDouble(textF_Precipitacion.getText());
-
-    ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
-    
-
-    Stage stage = (Stage) botonGuardar.getScene().getWindow();
-    ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
-    stage.close();
-    
   }
 }

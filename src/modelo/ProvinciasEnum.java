@@ -2,6 +2,8 @@ package modelo;
 
 /**
  * <main>ProvinciasEnum</main>
+ * <p>
+ * Contiene las provincias de españa con su nombre tipo String</p>
  *
  * @email al.andres.rios.lima@iesportada.es
  * @author Andres Ríos Lima
@@ -62,8 +64,13 @@ public enum ProvinciasEnum {
   ZAMORA("ZAMORA"),
   ZARAGOZA("ZARAGOZA");
 
+  //Variable con el nombre tipo String de la provincia
   String nombreProvincia;
 
+  /**
+   * Constructor del Enum
+   * @param nombreProvincia nombre de la provincia
+   */
   private ProvinciasEnum(String nombreProvincia) {
     this.nombreProvincia = nombreProvincia;
   }
