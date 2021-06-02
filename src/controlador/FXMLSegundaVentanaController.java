@@ -2,6 +2,8 @@ package controlador;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -109,6 +111,9 @@ public class FXMLSegundaVentanaController implements Initializable {
       double tem_max = Double.parseDouble(textF_Tem_Max.getText().replace(",", "."));
       double prec = Double.parseDouble(textF_Precipitacion.getText().replace(",", "."));
 
+      if (prec < 0) {//Si la precipitación es negativa lanza excepción
+        throw new Exception("El valor de precipitación no puede ser negativo.");
+      }
       //LLamada al método para recibir la medicion y los parámetros de modificación
       ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
       //Cuando se pulsa el boton cierra la ventana
@@ -117,6 +122,8 @@ public class FXMLSegundaVentanaController implements Initializable {
       stage.close();
     } catch (NumberFormatException e) {
       GestorAlertas.alertasErrores("Error", "Los valores introducidos no son correctos. ");
+    } catch (Exception ex) {
+      GestorAlertas.alertasErrores("Error", ex.getMessage());
     }
   }
 

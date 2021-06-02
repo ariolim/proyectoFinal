@@ -33,12 +33,17 @@ public class Medicion {
    * @param tem_max tipo double con la tem_max
    * @param preci_media tipo double con las precipitaciones
    * @param mes tipo Mes con el mes que corresponde
+   * @throws java.lang.Exception lanza excepción si el valor de la precipitación
+   * es negativo
    */
-  public Medicion(String nombreProvincia, double tem_min, double tem_med, double tem_max, double preci_media, Meses mes) {
+  public Medicion(String nombreProvincia, double tem_min, double tem_med, double tem_max, double preci_media, Meses mes) throws Exception {
     this.NOMBRE_PROVINCIA = nombreProvincia;
     this.tem_max = tem_max;
     this.tem_med = tem_med;
     this.tem_min = tem_min;
+    if (preci_media < 0) {
+      throw new Exception("El valor de la precipitación no puede ser negativo.");
+    }
     this.preci_media = preci_media;
     this.mes = mes;
   }
@@ -110,15 +115,20 @@ public class Medicion {
    * Stter para estrablecer la precipitacioens del mes.
    *
    * @param preci_media tipo double con la precipitación
+   * @throws java.lang.Exception Lanza excepción si el valor introducido es
+   * menor a 0
    */
-  public void setPreci_media(double preci_media) {
+  public void setPreci_media(double preci_media) throws Exception {
+    if (preci_media < 0) {
+      throw new Exception("La precipitaciones no pueden tener valor negativo");
+    }
     this.preci_media = preci_media;
   }
 
   /**
    * Setter para estrablecer la temperatura min del mes.
    *
-   * @param preci_media tipo double con tem_minima
+   * @param tem_min tipo double con tem_minima
    */
   public void setTem_min(double tem_min) {
     this.tem_min = tem_min;
@@ -127,7 +137,7 @@ public class Medicion {
   /**
    * Setter para estrablecer la temperatura med del mes.
    *
-   * @param preci_media tipo double con tem_media
+   * @param tem_med tipo double con tem_media
    */
   public void setTem_med(double tem_med) {
     this.tem_med = tem_med;
@@ -136,7 +146,7 @@ public class Medicion {
   /**
    * Setter para estrablecer la temperatura max del mes.
    *
-   * @param preci_media tipo double con tem_max
+   * @param tem_max tipo double con tem_max
    */
   public void setTem_max(double tem_max) {
     this.tem_max = tem_max;
