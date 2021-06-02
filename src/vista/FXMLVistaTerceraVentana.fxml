@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="760.0" prefWidth="719.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLTerceraVentanaController">
+   <children>
+      <TableView fx:id="tableViewMediasAnuales" layoutX="21.0" layoutY="78.0" prefHeight="629.0" prefWidth="675.0">
+        <columns>
+          <TableColumn fx:id="tableColNomProvincia" prefWidth="133.0" text="PROVINCIA" />
+          <TableColumn fx:id="tableColTemMin" minWidth="0.0" prefWidth="143.0" text="TEM_MIN" />
+            <TableColumn fx:id="tableColTemMedia" prefWidth="131.0" text="TEM_MED" />
+            <TableColumn fx:id="tableColTemMax" prefWidth="127.0" text="TEM_MAX" />
+            <TableColumn fx:id="tableColPreci" prefWidth="136.0" text="PRECIPITACION" />
+        </columns>
+      </TableView>
+      <Label id="tituloTerceraVentana" layoutX="20.0" layoutY="32.0" prefHeight="16.0" prefWidth="681.0" text="CALCULO MEDIAS ANUALES" textAlignment="CENTER">
+        
+      </Label>
+   </children>
+</AnchorPane>

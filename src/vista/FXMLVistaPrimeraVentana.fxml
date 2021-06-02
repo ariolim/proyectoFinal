@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="920.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
+<AnchorPane prefHeight="579.0" prefWidth="920.0" stylesheets="@../recursos/css/estilo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FXMLPrimeraVentanaController">
    <children>
       <TableView fx:id="tablaMediciones" layoutX="37.0" layoutY="134.0" onKeyPressed="#selectcionarTeclado" onMouseClicked="#devolverMedicionTabla" prefHeight="334.0" prefWidth="575.0">
         <columns>
@@ -33,6 +33,7 @@
       <Button fx:id="botonCargarBaseDatos" layoutX="635.0" layoutY="488.0" mnemonicParsing="false" onAction="#cargarBaseDatosConFichero" text="Cargar Base Datos por Defecto" />
       <Label layoutX="669.0" layoutY="118.0" prefHeight="16.0" prefWidth="179.0" text="Seleccione provincia:" />
       <Label layoutX="668.0" layoutY="185.0" prefHeight="16.0" prefWidth="179.0" text="Selecciones mes:" />
+      <Button fx:id="botonCalculoMedAnual" layoutX="636.0" layoutY="456.0" mnemonicParsing="false" onAction="#mostrarMediasAnuales" prefHeight="24.0" prefWidth="245.0" text="Calcular Medias Anuales" />
    </children>
    <cursor>
       <Cursor fx:constant="DEFAULT" />

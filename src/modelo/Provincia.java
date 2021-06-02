@@ -117,4 +117,74 @@ public class Provincia {
     }
     return medicionParaDevolver;
   }
+
+  /**
+   * Método público que devuelve la media anual de todas las temperaturas
+   * mínimas de una provincia
+   *
+   * @return tipo double con la media anual temperaturas mínimas.
+   */
+  public double devolverMediaAnualTemMin() {
+    return calculoMediasAnuales(1);
+  }
+
+  /**
+   * Método público que devuelve la media anual de todas las temperaturas medias
+   * de una provincia
+   *
+   * @return tipo double con la media anual temperaturas medias.
+   */
+  public double devolverMediaAnualTemMed() {
+    return calculoMediasAnuales(2);
+  }
+
+  /**
+   * Método público que devuelve la media anual de todas las temperaturas
+   * máximas de una provincia
+   *
+   * @return tipo double con la media anual temperaturas máximas.
+   */
+  public double devolverMediaAnualTemMax() {
+    return calculoMediasAnuales(3);
+  }
+
+  /**
+   * Método público que devuelve la media anual de todas las precipitaciones de
+   * una provincia
+   *
+   * @return tipo double con la media anual precipitaciones.
+   */
+  public double devolverMediaAnualPreci() {
+    return calculoMediasAnuales(4);
+  }
+
+  /**
+   * Método privado que calcula la media de los parámetros de las mediciones de
+   * una provincia
+   *
+   * @param tipoParametro tipo entero con el parámatro exacto que vamos a
+   * calcular la media.
+   * @return tipo double con la media del parámetro elegido.
+   */
+  private double calculoMediasAnuales(int tipoParametro) {
+    double suma = 0;
+
+    for (Medicion medicion : listaMediciones) {
+      switch (tipoParametro) {
+        case 1:
+          suma += medicion.getTem_min();
+          break;
+        case 2:
+          suma += medicion.getTem_med();
+          break;
+        case 3:
+          suma += medicion.getTem_max();
+          break;
+        case 4:
+          suma += medicion.getPreci_media();
+          break;
+      }
+    }
+    return suma / listaMediciones.size();
+  }
 }

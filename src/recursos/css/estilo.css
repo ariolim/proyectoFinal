@@ -13,6 +13,14 @@
 #titulo{
   -fx-text-fill:e9a734;
   -fx-font-weight:bold;
+  -fx-alignment: center;
+  -dx-font-size:20px;
+}
+/*características del título de la tercera ventana*/
+#tituloTerceraVentana{
+  -fx-text-fill:e9a734;
+  -fx-font-weight:bold;
+  -fx-alignment: center;
   -dx-font-size:20px;
 }
 /*características de los botones*/

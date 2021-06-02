@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -69,11 +71,12 @@ public class FXMLPrimeraVentanaController implements Initializable {
   private Button botonMostrarDatos;
   @FXML
   private Button botonCargarBaseDatos;
+  @FXML
+  private Button botonCalculoMedAnual;
   /**
    * Atributo para cargar una instancia del controlador de la primera ventana
    */
   FXMLPrimeraVentanaController controladorPrimeraVentana;
-
   /**
    * Atributo con la lista de provincias.
    */
@@ -161,38 +164,6 @@ public class FXMLPrimeraVentanaController implements Initializable {
   @FXML
   private void botonModificarMedicion(ActionEvent event) {
     modificarMedicionSeleccionada();
-  }
-
-  /**
-   * Método público del controlador de la primera ventana, se pe pasa por
-   * parámetros la medición que se ha utilizado en el controlador de la segunda
-   * ventana y los datos para modificarla
-   *
-   * @param medicion tipo Medición con la medición utilizada
-   * @param tem_min tipo double con el nuevo dato de tem_min de la medición
-   * @param tem_med tipo double con el nuevo dato de tem_med de la medición
-   * @param tem_max tipo double con el nuevo dato de tem_max de la medición
-   * @param preci tipo double con el nuevo dato de precipitación de la medición
-   */
-  public void recibirMedicionModificadaVenDos(Medicion medicion, double tem_min, double tem_med, double tem_max, double preci) {
-
-    try {
-      /*
-      * Se setean los nuevos datos en la medición (esta medición al cambiar sus valores cambia en las listas
-      * de la contenga puesto que lo que se teiene es una referencia a memoria de esta medición,
-      * por eso no hace falta cambiarla o introducir una nueva en los observables ni en los arrayList que se encuentran
-       */
-      medicion.setTem_min(tem_min);
-      medicion.setTem_med(tem_med);
-      medicion.setTem_max(tem_max);
-      medicion.setPreci_media(preci);
-      //Se refresca la tabla para mostrar los datos modificados.
-      tablaMediciones.refresh();
-
-      GestionBDTablaMediciones.actualizarMediciones(medicion);
-    } catch (Exception ex) {
-      ClaseAlertas.alertasErrores("error", ex.getMessage());
-    }
   }
 
   /**
@@ -297,6 +268,63 @@ public class FXMLPrimeraVentanaController implements Initializable {
       }
       comoBoxProvincias.requestFocus();
     } catch (Exception ex) {//Control de exceciones
+      ClaseAlertas.alertasErrores("error", ex.getMessage());
+    }
+  }
+
+  @FXML
+  private void mostrarMediasAnuales(ActionEvent event) {
+
+    try {
+      //Cargar la vista de la nueva ventana.
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLVistaTerceraVentana.fxml"));
+      //Carga en el padre o root toso los elementos que contendrá la vista.
+      Parent root = loader.load();
+
+      //Instanciamos una nueva scena con los elementos cargados en el root
+      Scene scene = new Scene(root);
+      Stage stage = new Stage();//Instanciamos un nuevo scenario
+      stage.setTitle("Modificaciones");
+      //La modalidad del nuevo escenario será aplicación modal (para que no se pueda realizaracciones con la ventana nueva abierta.
+      stage.initModality(Modality.APPLICATION_MODAL);
+      stage.setScene(scene);//Cargamos el escenario con la escena
+      stage.setResizable(false);//ponemos para que no se pueda cambiar el tamño de la ventana
+      //Este método muestra la ventana y deja el evento en parada para que e pueda realizar otro eventos en la nueva ventana y no pase la ejecución del programa de esta linea esta que se cierra la ventanan nueva.
+      stage.showAndWait();
+    } catch (IOException ex) {
+      ClaseAlertas.alertasMensajes("Error", ex.getMessage());
+    }
+
+  }
+
+  /**
+   * Método público del controlador de la primera ventana, se pe pasa por
+   * parámetros la medición que se ha utilizado en el controlador de la segunda
+   * ventana y los datos para modificarla
+   *
+   * @param medicion tipo Medición con la medición utilizada
+   * @param tem_min tipo double con el nuevo dato de tem_min de la medición
+   * @param tem_med tipo double con el nuevo dato de tem_med de la medición
+   * @param tem_max tipo double con el nuevo dato de tem_max de la medición
+   * @param preci tipo double con el nuevo dato de precipitación de la medición
+   */
+  public void recibirMedicionModificadaVenDos(Medicion medicion, double tem_min, double tem_med, double tem_max, double preci) {
+
+    try {
+      /*
+      * Se setean los nuevos datos en la medición (esta medición al cambiar sus valores cambia en las listas
+      * de la contenga puesto que lo que se teiene es una referencia a memoria de esta medición,
+      * por eso no hace falta cambiarla o introducir una nueva en los observables ni en los arrayList que se encuentran
+       */
+      medicion.setTem_min(tem_min);
+      medicion.setTem_med(tem_med);
+      medicion.setTem_max(tem_max);
+      medicion.setPreci_media(preci);
+      //Se refresca la tabla para mostrar los datos modificados.
+      tablaMediciones.refresh();
+
+      GestionBDTablaMediciones.actualizarMediciones(medicion);
+    } catch (Exception ex) {
       ClaseAlertas.alertasErrores("error", ex.getMessage());
     }
   }
