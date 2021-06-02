@@ -7,7 +7,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 
 /**
- * <main>ClaseAlertas</main>
+ * <main>GestorAlertas</main>
  * <p>
  * Contiene diferentes tipos de alertas que se le pueden mostrar al usuario</p>
  *
@@ -15,7 +15,7 @@ import javafx.scene.layout.Region;
  * @author Andres Ríos Lima
  * @version 1.0
  */
-public class ClaseAlertas {
+public class GestorAlertas {
 
   /**
    * Método static para introducir el título y el mensaje que contendrá las

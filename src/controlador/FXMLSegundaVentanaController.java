@@ -113,7 +113,7 @@ public class FXMLSegundaVentanaController implements Initializable {
     ctrl1Ventana.recibirMedicionModificadaVenDos(medicionAux, tem_min, tem_med, tem_max, prec);
     //Cuando se pulsa el boton cierra la ventana
     Stage stage = (Stage) botonGuardar.getScene().getWindow();
-    ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
+    GestorAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
     stage.close();
   }
 

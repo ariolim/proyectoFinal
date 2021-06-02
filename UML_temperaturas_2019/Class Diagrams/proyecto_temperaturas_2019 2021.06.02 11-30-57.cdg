@@ -15,27 +15,27 @@
       </Constructors>
       <Methods>
         <Method name="getNombre" returnType="String" visibility="public"/>
-        <Method name="setNombre" returnType="void" visibility="public">
+        <Method name="setNombre" returnType="String" visibility="public">
           <Argument type="String" name="nombre"/>
         </Method>
         <Method name="getListaMediciones" returnType="ArrayList&lt;Medicion&gt;" visibility="public"/>
-        <Method name="setListaMediciones" returnType="void" visibility="public">
+        <Method name="setListaMediciones" returnType="ArrayList&lt;Medicion&gt;" visibility="public">
           <Argument type="ArrayList&lt;Medicion&gt;" name="listaMediciones"/>
         </Method>
-        <Method name="insertarMedicion" returnType="void" visibility="public">
+        <Method name="insertarMedicion" returnType="Medicion" visibility="public">
           <Argument type="Medicion" name="medicion"/>
         </Method>
-        <Method name="mostrarMedicion" returnType="Medicion" visibility="public">
+        <Method name="mostrarMedicion" returnType="Meses" visibility="public">
           <Argument type="Meses" name="mes"/>
         </Method>
-        <Method name="devolverMedicionMesExcacto" returnType="Medicion" visibility="private">
+        <Method name="devolverMedicionMesExcacto" returnType="Meses" visibility="private">
           <Argument type="Meses" name="mes"/>
         </Method>
         <Method name="devolverMediaAnualTemMin" returnType="double" visibility="public"/>
         <Method name="devolverMediaAnualTemMed" returnType="double" visibility="public"/>
         <Method name="devolverMediaAnualTemMax" returnType="double" visibility="public"/>
         <Method name="devolverMediaAnualPreci" returnType="double" visibility="public"/>
-        <Method name="calculoMediasAnuales" returnType="double" visibility="private">
+        <Method name="calculoMediasAnuales" returnType="int" visibility="private">
           <Argument type="int" name="tipoParametro"/>
         </Method>
       </Methods>
@@ -66,23 +66,23 @@
         <Method name="getMes" returnType="Meses" visibility="public"/>
         <Method name="getTem_max" returnType="double" visibility="public"/>
         <Method name="getTem_med" returnType="double" visibility="public"/>
-        <Method name="setMes" returnType="void" visibility="public">
+        <Method name="setMes" returnType="Meses" visibility="public">
           <Argument type="Meses" name="mes"/>
         </Method>
-        <Method name="setPreci_media" returnType="void" visibility="public">
+        <Method name="setPreci_media" returnType="double" visibility="public">
           <Argument type="double" name="preci_media"/>
         </Method>
-        <Method name="setTem_min" returnType="void" visibility="public">
+        <Method name="setTem_min" returnType="double" visibility="public">
           <Argument type="double" name="tem_min"/>
         </Method>
-        <Method name="setTem_med" returnType="void" visibility="public">
+        <Method name="setTem_med" returnType="double" visibility="public">
           <Argument type="double" name="tem_med"/>
         </Method>
-        <Method name="setTem_max" returnType="void" visibility="public">
+        <Method name="setTem_max" returnType="double" visibility="public">
           <Argument type="double" name="tem_max"/>
         </Method>
         <Method name="hashCode" returnType="int" visibility="public"/>
-        <Method name="equals" returnType="boolean" visibility="public">
+        <Method name="equals" returnType="Object" visibility="public">
           <Argument type="Object" name="obj"/>
         </Method>
       </Methods>
@@ -92,14 +92,14 @@
       <Constructors/>
       <Methods>
         <Method name="generarListaProvincias" returnType="ArrayList&lt;Provincia&gt;" visibility="public" isStatic="true"/>
-        <Method name="insertarMediciones" returnType="void" visibility="public" isStatic="true">
+        <Method name="insertarMediciones" returnType="Provincia" visibility="public" isStatic="true">
           <Argument type="Provincia" name="provincia"/>
         </Method>
         <Method name="obtenerFilasTabla" returnType="boolean" visibility="public" isStatic="true"/>
-        <Method name="actualizarMediciones" returnType="void" visibility="public" isStatic="true">
+        <Method name="actualizarMediciones" returnType="Medicion" visibility="public" isStatic="true">
           <Argument type="Medicion" name="medicion"/>
         </Method>
-        <Method name="devolverIndiceProvincia" returnType="int" visibility="private" isStatic="true">
+        <Method name="devolverIndiceProvincia" returnType="ArrayList&lt;Provincia&gt;" visibility="private" isStatic="true">
           <Argument type="String" name="nombreString"/>
           <Argument type="ArrayList&lt;Provincia&gt;" name="listaProvincias"/>
         </Method>
@@ -134,7 +134,7 @@
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="conexion" returnType="Connection" visibility="public" isStatic="true">
+        <Method name="conexion" returnType="String" visibility="public" isStatic="true">
           <Argument type="String" name="fichero"/>
         </Method>
         <Method name="conexion" returnType="Connection" visibility="public" isStatic="true"/>
@@ -177,38 +177,38 @@
       <Constructors/>
       <Methods>
         <Method name="getListaProvincias" returnType="ArrayList&lt;Provincia&gt;" visibility="public"/>
-        <Method name="initialize" returnType="void" visibility="public">
+        <Method name="initialize" returnType="ResourceBundle" visibility="public">
           <Argument type="URL" name="url"/>
           <Argument type="ResourceBundle" name="rb"/>
         </Method>
-        <Method name="devolverMedicionTabla" returnType="void" visibility="private">
+        <Method name="devolverMedicionTabla" returnType="MouseEvent" visibility="private">
           <Argument type="MouseEvent" name="event"/>
         </Method>
-        <Method name="selectcionarComboProvincias" returnType="void" visibility="private">
+        <Method name="selectcionarComboProvincias" returnType="MouseEvent" visibility="private">
           <Argument type="MouseEvent" name="event"/>
         </Method>
-        <Method name="selecccionComboMeses" returnType="void" visibility="private">
+        <Method name="selecccionComboMeses" returnType="MouseEvent" visibility="private">
           <Argument type="MouseEvent" name="event"/>
         </Method>
-        <Method name="botonModificarMedicion" returnType="void" visibility="private">
+        <Method name="botonModificarMedicion" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="resetearVentana" returnType="void" visibility="private">
+        <Method name="resetearVentana" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="mostrarDatosTabla" returnType="void" visibility="private">
+        <Method name="mostrarDatosTabla" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="selectcionarTeclado" returnType="void" visibility="private">
+        <Method name="selectcionarTeclado" returnType="KeyEvent" visibility="private">
           <Argument type="KeyEvent" name="event"/>
         </Method>
-        <Method name="cargarBaseDatosConFichero" returnType="void" visibility="private">
+        <Method name="cargarBaseDatosConFichero" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="mostrarMediasAnuales" returnType="void" visibility="private">
+        <Method name="mostrarMediasAnuales" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="recibirMedicionModificadaVenDos" returnType="void" visibility="public">
+        <Method name="recibirMedicionModificadaVenDos" returnType="double" visibility="public">
           <Argument type="Medicion" name="medicion"/>
           <Argument type="double" name="tem_min"/>
           <Argument type="double" name="tem_med"/>
@@ -233,11 +233,11 @@
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="initialize" returnType="void" visibility="public">
+        <Method name="initialize" returnType="ResourceBundle" visibility="public">
           <Argument type="URL" name="url"/>
           <Argument type="ResourceBundle" name="rb"/>
         </Method>
-        <Method name="recibirlistaProvincias" returnType="void" visibility="public">
+        <Method name="recibirlistaProvincias" returnType="FXMLPrimeraVentanaController" visibility="public">
           <Argument type="FXMLPrimeraVentanaController" name="escena1"/>
         </Method>
       </Methods>
@@ -248,28 +248,28 @@
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="main" returnType="void" visibility="public" isStatic="true">
+        <Method name="main" returnType="String[]" visibility="public" isStatic="true">
           <Argument type="String[]" name="args"/>
         </Method>
-        <Method name="start" returnType="void" visibility="public">
+        <Method name="start" returnType="Stage" visibility="public">
           <Argument type="Stage" name="stage"/>
         </Method>
         <Method name="cargarListaFichero" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="ClaseAlertas" package="controlador" visibility="public" xPosition="2180.0" yPosition="1280.0">
+    <Class name="GestorAlertas" package="controlador" visibility="public" xPosition="2180.0" yPosition="1280.0">
       <Fields/>
       <Constructors/>
       <Methods>
-        <Method name="alertasErrores" returnType="void" visibility="public" isStatic="true">
+        <Method name="alertasErrores" returnType="String" visibility="public" isStatic="true">
           <Argument type="String" name="título"/>
           <Argument type="String" name="mensaje"/>
         </Method>
-        <Method name="alertasMensajes" returnType="void" visibility="public" isStatic="true">
+        <Method name="alertasMensajes" returnType="String" visibility="public" isStatic="true">
           <Argument type="String" name="título"/>
           <Argument type="String" name="mensaje"/>
         </Method>
-        <Method name="alertasConfiramcion" returnType="Optional&lt;ButtonType&gt;" visibility="public" isStatic="true">
+        <Method name="alertasConfiramcion" returnType="String" visibility="public" isStatic="true">
           <Argument type="ActionEvent" name="event"/>
           <Argument type="String" name="mensaje"/>
         </Method>
@@ -287,26 +287,26 @@
       </Fields>
       <Constructors/>
       <Methods>
-        <Method name="initialize" returnType="void" visibility="public">
+        <Method name="initialize" returnType="ResourceBundle" visibility="public">
           <Argument type="URL" name="url"/>
           <Argument type="ResourceBundle" name="rb"/>
         </Method>
-        <Method name="cambioTemperaturaMinima" returnType="void" visibility="private">
+        <Method name="cambioTemperaturaMinima" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="cambioTem_Media" returnType="void" visibility="private">
+        <Method name="cambioTem_Media" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="cambioTem_Max" returnType="void" visibility="private">
+        <Method name="cambioTem_Max" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="cambioPrecipitacion" returnType="void" visibility="private">
+        <Method name="cambioPrecipitacion" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="eventoBotonGuardar" returnType="void" visibility="private">
+        <Method name="eventoBotonGuardar" returnType="ActionEvent" visibility="private">
           <Argument type="ActionEvent" name="event"/>
         </Method>
-        <Method name="recibirMedicionCtrlUno" returnType="void" visibility="public">
+        <Method name="recibirMedicionCtrlUno" returnType="Medicion" visibility="public">
           <Argument type="FXMLPrimeraVentanaController" name="escena1"/>
           <Argument type="Medicion" name="medicion"/>
         </Method>
@@ -386,27 +386,27 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="tablaMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaObservableMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;MediaAnual&gt;"/>
+    <UseRelation source="modelo.Medicion" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaMediciones" source="modelo.Provincia" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicion&gt;"/>
+    <HasRelation name="listaProvincias" source="controlador.Principal" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
+    <HasRelation name="mes" source="modelo.Medicion" target="modelo.Meses" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ctrl1Ventana" source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.FXMLTerceraVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="modelo.Provincia" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="controladorPrimeraVentana" source="controlador.FXMLPrimeraVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tableViewMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaMediciones" source="modelo.Provincia" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicion&gt;"/>
-    <HasRelation name="mes" source="modelo.Medicion" target="modelo.Meses" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.FXMLTerceraVentanaController" target="controlador.FXMLPrimeraVentanaController" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="medicionAux" source="controlador.FXMLSegundaVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaObservableMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Medicion&gt;"/>
-    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaProvincias" source="controlador.Principal" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
     <HasRelation name="listaProvincias" source="controlador.FXMLPrimeraVentanaController" target="modelo.Provincia" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Provincia&gt;"/>
+    <HasRelation name="tableViewMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaObservableMediciones" source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Medicion&gt;"/>
     <UseRelation source="modelo.GestionBDTablaMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="listaObservableMediasAnuales" source="controlador.FXMLTerceraVentanaController" target="modelo.MediaAnual" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;MediaAnual&gt;"/>
     <UseRelation source="modelo.LeerExcelMediciones" target="modelo.Provincia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.FXMLPrimeraVentanaController" target="modelo.Medicion" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="ctrl1Ventana" source="controlador.FXMLSegundaVentanaController" target="controlador.FXMLPrimeraVentanaController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.Medicion" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="modelo.Provincia" target="modelo.Meses" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

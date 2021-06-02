@@ -222,7 +222,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
         }
       }
     } catch (Exception e) {//Excepciones
-      ClaseAlertas.alertasErrores("Error", e.getMessage());
+      GestorAlertas.alertasErrores("Error", e.getMessage());
       //requiere focus al combo de provincias
       comoBoxProvincias.requestFocus();
     }
@@ -253,7 +253,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
     Optional<ButtonType> resultado;
     try {
       //Cargamos la opción elegida por el usuario
-      resultado = ClaseAlertas.alertasConfiramcion(event, "¿Desea realmente cargar la base de datos con los datos del fichero Excel?");
+      resultado = GestorAlertas.alertasConfiramcion(event, "¿Desea realmente cargar la base de datos con los datos del fichero Excel?");
 
       //SI la opción elegida es afirmativa se produde la carga de la lista de provincias con los datos del fichero excel
       if (resultado.get() == ButtonType.OK) {
@@ -266,12 +266,12 @@ public class FXMLPrimeraVentanaController implements Initializable {
           GestionBDTablaMediciones.insertarMediciones(provincia);
         }
         //Finalmente, si todo ha salido correctamente salta una alerta de mensaje
-        ClaseAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
+        GestorAlertas.alertasMensajes("Mensaje", "Base de datos actualizada");
       }
       resetDatos();
       comoBoxProvincias.requestFocus();
     } catch (Exception ex) {//Control de exceciones
-      ClaseAlertas.alertasErrores("error", ex.getMessage());
+      GestorAlertas.alertasErrores("error", ex.getMessage());
     }
   }
 
@@ -306,7 +306,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
       stage.showAndWait();
       comoBoxProvincias.requestFocus();
     } catch (IOException ex) {
-      ClaseAlertas.alertasMensajes("Error", ex.getMessage());
+      GestorAlertas.alertasMensajes("Error", ex.getMessage());
     }
   }
 
@@ -338,7 +338,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
 
       GestionBDTablaMediciones.actualizarMediciones(medicion);
     } catch (Exception ex) {
-      ClaseAlertas.alertasErrores("error", ex.getMessage());
+      GestorAlertas.alertasErrores("error", ex.getMessage());
     }
   }
 
@@ -403,7 +403,7 @@ public class FXMLPrimeraVentanaController implements Initializable {
       comoBoxProvincias.requestFocus();
       tablaMediciones.refresh();
     } catch (IOException ex) {
-      ClaseAlertas.alertasErrores("Error", ex.getMessage());
+      GestorAlertas.alertasErrores("Error", ex.getMessage());
     }
   }
 }

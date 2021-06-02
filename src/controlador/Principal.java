@@ -66,7 +66,7 @@ public class Principal extends Application {
       stage.setResizable(false);
       stage.show();
     } catch (Exception ex) {
-      ClaseAlertas.alertasErrores("Error", ex.getMessage());
+      GestorAlertas.alertasErrores("Error", ex.getMessage());
     }
   }
 

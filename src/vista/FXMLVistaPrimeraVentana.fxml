@@ -22,14 +22,14 @@
       </TableView>
       <ComboBox fx:id="comoBoxProvincias" layoutX="668.0" layoutY="150.0" onMouseClicked="#selectcionarComboProvincias" prefHeight="24.0" prefWidth="179.0" />
       <ComboBox fx:id="comboMeses" layoutX="668.0" layoutY="212.0" onMouseClicked="#selecccionComboMeses" prefHeight="24.0" prefWidth="179.0" />
-      <Button fx:id="botonModificar" layoutX="683.0" layoutY="391.0" mnemonicParsing="false" onAction="#botonModificarMedicion" prefHeight="24.0" prefWidth="150.0" text="Modificar Medición" />
+      <Button fx:id="botonModificar" layoutX="683.0" layoutY="391.0" mnemonicParsing="false" onAction="#botonModificarMedicion" prefHeight="24.0" prefWidth="163.0" text="Modificar Medición" />
       <Label id="titulo" layoutX="99.0" layoutY="26.0" prefHeight="50.0" prefWidth="689.0" text="Relacion temperaturas y precipitaciones Provincias españolas 2019">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="botonReset" layoutX="683.0" layoutY="357.0" mnemonicParsing="false" onAction="#resetearVentana" prefHeight="24.0" prefWidth="150.0" text="Resetear" />
-      <Button fx:id="botonMostrarDatos" layoutX="683.0" layoutY="322.0" mnemonicParsing="false" onAction="#mostrarDatosTabla" prefHeight="24.0" prefWidth="150.0" text="Mostrar Datos" />
+      <Button fx:id="botonReset" layoutX="683.0" layoutY="357.0" mnemonicParsing="false" onAction="#resetearVentana" prefHeight="24.0" prefWidth="163.0" text="Resetear" />
+      <Button fx:id="botonMostrarDatos" layoutX="683.0" layoutY="322.0" mnemonicParsing="false" onAction="#mostrarDatosTabla" prefHeight="24.0" prefWidth="163.0" text="Mostrar Datos" />
       <Button fx:id="botonCargarBaseDatos" layoutX="635.0" layoutY="488.0" mnemonicParsing="false" onAction="#cargarBaseDatosConFichero" text="Cargar Base Datos por Defecto" />
       <Label layoutX="669.0" layoutY="118.0" prefHeight="16.0" prefWidth="179.0" text="Seleccione provincia:" />
       <Label layoutX="668.0" layoutY="185.0" prefHeight="16.0" prefWidth="179.0" text="Selecciones mes:" />
